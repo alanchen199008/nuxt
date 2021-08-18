@@ -14,7 +14,7 @@
         v-for="item in goods"
         :key="item.id"
         >
-      <van-checkbox :name="item.id">
+      <van-checkbox :name="item.id" >
       </van-checkbox>
       <NuxtLink :to="{name:'goods',params:{productId:item.id,title:item.name}}">
       <van-card
