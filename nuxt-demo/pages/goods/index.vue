@@ -80,7 +80,7 @@ export default {
   //   // Must be a number
   //   return /^\d+$/.test(params.id)
   // },
-  //独立设置head信息
+  // 独立设置head信息
   head(){
       return{
         title:this.title,
@@ -92,6 +92,10 @@ export default {
   mounted() {
     console.log(this.$route.params)
   },
+  // asyncData ({ app }, callback) {
+  //   // app.head.title = 'new title'
+  //   // callback(null, {})
+  // },
   data() {
     return {
       title:this.$route.params.title,

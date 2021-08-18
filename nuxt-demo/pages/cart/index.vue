@@ -17,13 +17,14 @@
       <van-checkbox :name="item.id" >
       </van-checkbox>
       <NuxtLink :to="{name:'goods',params:{productId:item.id,title:item.name}}">
-      <van-card
-          :title="item.name"
-          :desc="item.desc"
-          :num="item.num"
-          :price="formatPrice(item.float_delivery_fee)"
-          :thumb="item.image_path"
-        />
+        <van-card
+            :title="item.name"
+            :desc="item.desc"
+            :num="item.num"
+            :price="formatPrice(item.float_delivery_fee)"
+            :thumb="filePath(item.image_path)"
+          >
+        </van-card>
       </NuxtLink>
       </div>
       
@@ -56,10 +57,10 @@ export default {
       const {
         data
       } = await restaurants();
-      console.log(data)
-      data.map(item => {
-        item.image_path = config.IMG_URL + item.image_path;
-      });
+      // console.log(data)
+      // data.map(item => {
+      //   item.image_path = config.IMG_URL + item.image_path;
+      // });
       return {
         goods: data
       };
@@ -75,20 +76,6 @@ export default {
         //   price: 200,
         //   num: 1,
         //   thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg'
-        // }, {
-        //   id: '2',
-        //   title: '陕西蜜梨',
-        //   desc: '约600g',
-        //   price: 690,
-        //   num: 1,
-        //   thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg'
-        // }, {
-        //   id: '3',
-        //   title: '美国伽力果',
-        //   desc: '约680g/3个',
-        //   price: 2680,
-        //   num: 1,
-        //   thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg'
         // }
       ]
     };
@@ -109,12 +96,21 @@ export default {
       
     }
   },
-
+  filters: {
+    // formatPrice: function (value) {
+    //   return (price / 100).toFixed(2);
+    // },
+    // filePath:function(value) {
+    //   return config.IMG_URL + value
+    // }
+  },
   methods: {
     formatPrice(price) {
       return (price / 100).toFixed(2);
     },
-
+    filePath:function(value) {
+      return config.IMG_URL + value
+    },
     onSubmit() {
       Toast('点击结算');
     }

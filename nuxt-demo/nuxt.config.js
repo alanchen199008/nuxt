@@ -30,7 +30,8 @@ export default {
   plugins: [
     '@/plugins/vant',
     '@/plugins/VueVideoPlayer',
-    '@/plugins/vueBaberrage'
+    '@/plugins/vueBaberrage',
+    '~/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
