@@ -1,0 +1,65 @@
+<template>
+  <div class="wos-card">
+    <div class="wos-card__head">
+      {{ title }}
+    </div>
+    <div class="wos-card__body">
+      <slot />
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'WosCard',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+
+    extraTxt: {
+      type: String,
+      default: '更多'
+    },
+    full: {
+      type: Boolean,
+      default: false
+    },
+    shadow: {
+      type: Boolean,
+      default: true
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.wos-card {
+  position: relative;
+  background-color: #fff;
+  margin: 20px 0 0;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+  &__head {
+    padding: 8px 10px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #EBEBEB;
+    &::before {
+      width: 3px;
+      height: 15px;
+      content: "";
+      margin-top: -4px;
+      display: inline-block;
+      margin-right: 8px;
+      vertical-align: middle;
+      background: #F87D22;
+    }
+  }
+  &__body {
+    font-size: 13px;
+    padding: 15px 15px;
+    p { margin-bottom: 15px;}
+  }
+}
+</style>

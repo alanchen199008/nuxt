@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <% if (process.env.NODE_ENV === 'production') { %>
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <% } %> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="browsermode" content="application">
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="x5-page-mode" content="app" />
+    <meta name="360-fullscreen" content="true" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="google" value="notranslate">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
+      <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.cdn.css[i] %>">
+    <% } %>
+    
+    <style><%=require('!text-loader!../node_modules/flex.css/dist/flex.css') %></style>
+    <style> html, body { max-width: 440px; min-width: 320px;  margin: 0 auto;} </style>
+    <script>
+      (function () {function autoRootFontSize() {document.documentElement.style.fontSize = Math.min(screen.width, document.documentElement.getBoundingClientRect().width) / 10 + 'px';}window.addEventListener('resize', autoRootFontSize);autoRootFontSize();})();
+    </script> 
+    <script src="<%= BASE_URL %>js/cstaticdun.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+      <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %>
+    <script src="https://cdn.jsdelivr.net/npm/lottie-web@latest" async="async"></script>
+    <script src="//pv.sohu.com/cityjson?ie=utf-8" async="async"></script>
+  </body>
+</html>

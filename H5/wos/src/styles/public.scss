@@ -1,0 +1,76 @@
+@font-face {
+  font-family: DIN-Light;
+  src: url('../assets/fonts/DIN-Light.otf');
+}
+
+@font-face {
+  font-family: DIN-Medium;
+  src: url('../assets/fonts/DIN-Medium.otf');
+}
+
+:root {
+  --text-primary: #333333;
+  --text-regular: #666666;
+  --text-secondary: #999999;
+  --text-placeholder: #C0C4CC;
+
+  --border-color: #ddd;
+
+  --table-head-color: #F5F4F7;
+
+  --paper-background-color: #F5F5F5;
+  --paper-grey: #F5F4F7;
+  --paper-red: #FF0000;
+  --paper-red-500:#DD3822;
+  --paper-green: #009954;
+  --paper-green-500: #34A853;
+  --paper-green-700: #21D4AD;
+  --paper-green-900: #00C8B0;
+  --paper-bule-100:#DBECFF;
+  --paper-bule-300:#93C8FF;
+  --paper-bule-500:#1C86F3;
+  --paper-yellow-100:#FFF3D1;
+  --paper-yellow-300:#FFE293;
+
+  --paper-orange-500: #F87D22;
+}
+
+.bar-default {
+  background-color: var(--paper-background-color)!important;
+  height: auto !important;
+}
+
+.color-blue-regular {
+  color: var(--paper-bule-500);
+}
+
+.color-green-regular {
+  color: #009954;
+}
+
+.color-red-regular {
+  color: var(--paper-red);
+}
+
+.fh {
+  height: 100%;
+}
+
+.d-container {
+  padding-bottom: 50px;
+  height: 100%; 
+  &.vivo{
+    padding-bottom: 110px;
+  }
+}
+.a-container{
+  height: 100%;
+}
+.scroll-touch {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.action-button {
+  margin: 20px 15px 0;
+}

@@ -1,0 +1,8 @@
+$blue: #00C8B0;
+$button-linear-gradient: linear-gradient(to right,#00d1cb, #00a0e3);
+
+
+:export {
+  primaryColor: $blue;
+  buttonGradient: $button-linear-gradient;
+} 

@@ -1,0 +1,3 @@
+<template>
+  <d-empty />
+</template>

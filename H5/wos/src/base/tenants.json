@@ -1,0 +1,60 @@
+{
+  "data": [
+    {
+      "domain": "192.168.191.1",
+      "code": "TYCC"
+    },
+    {
+      "domain": "172.16.11.15",
+      "code": "TYCC"
+    },
+    {
+      "domain": "192.168.10.151",
+      "code": "TYCC"
+    },
+    {
+      "domain": "192.168.1.40",
+      "code": "TYCC"
+    },
+    {
+      "domain": "192.168.10.164",
+      "code": "TYCC"
+    },
+    {
+      "domain": "h5.wosprdapp.net",
+      "code": "TYCC"
+    },
+    {
+      "domain": "wos-h5.wosprdapp.net",
+      "code": "TYCC"
+    },
+    {
+      "domain":"wosprdapp.net",
+      "code": "TYCC"
+    },
+    {
+      "domain": "wos-h5.theclzb.net",
+      "code": "TYCC"
+    }, 
+    {
+      "domain":"h5.awsjb.com",
+      "code": "TYCC"
+    },
+    {
+      "domain":"h5.aksjb.com ",
+      "code": "TYCC"
+    }, 
+    {
+      "domain":"h5.hisjb.com",
+      "code": "TYCC"
+    },
+    {
+      "domain":"h5.kksjb.com",
+      "code": "TYCC"
+    },
+    {
+      "domain":"uat-h5.kksjb.com",
+      "code": "TYCC"
+    }
+  ]
+}

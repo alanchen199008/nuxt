@@ -1,0 +1,125 @@
+// 图片icon
+.img-icon {
+  &.follow {
+    background: url("../assets/account/about.png") no-repeat center;
+    background-size: contain;
+  }
+  &.process {
+    &-1 {
+      background: url("../assets/invite/process-1.png") no-repeat center;
+      background-size: contain;
+    }
+    &-2 {
+      background: url("../assets/invite/process-2.png") no-repeat center;
+      background-size: contain;
+    }
+    &-3 {
+      background: url("../assets/invite/process-3.png") no-repeat center;
+      background-size: contain;
+    }
+    &-step {
+      background: url("../assets/invite/process-step.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+  &.share{
+    &-1{
+      background: url("../assets/invite/share-1.png") no-repeat center;
+      background-size: contain;
+    }
+    &-2{
+      background: url("../assets/invite/share-2.png") no-repeat center;
+      background-size: contain;
+    }
+    &-3{
+      background: url("../assets/invite/share-3.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+  &.issue{
+    &-1{
+      background: url("../assets/invite/issue-1.png") no-repeat center;
+      background-size: contain;
+    }
+    &-2{
+      background: url("../assets/invite/issue-2.png") no-repeat center;
+      background-size: contain;
+    }
+    &-3{
+      background: url("../assets/invite/issue-3.png") no-repeat center;
+      background-size: contain;
+    }
+    &-4{
+      background: url("../assets/invite/issue-4.png") no-repeat center;
+      background-size: contain;
+    }
+    &-5{
+      background: url("../assets/invite/issue-5.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+  &.attention {
+    background: url("../assets/expert/attention.png") no-repeat center;
+    background-size: contain;
+  }
+  &.unattention {
+    background: url("../assets/expert/unattention.png") no-repeat center;
+    background-size: contain;
+  }
+  &.hot {
+    background: url("../assets/expert/hot.png") no-repeat center;
+    background-size: contain;
+  }
+  &.info {
+    background: url("../assets/expert/info.png") no-repeat center;
+    background-size: contain;
+  }
+  &.gold {
+    background: url("../assets/public/gold.png") no-repeat center;
+    background-size: contain;
+  }
+  &.plus {
+    background: url("../assets/public/plus.png") no-repeat center;
+    background-size: contain;
+  }
+  &.refund {
+    background: url("../assets/public/refund.png") no-repeat center;
+    background-size: contain;
+  }
+  &.eye-on {
+    background: url("../assets/expert/eye-on.png") no-repeat center;
+    background-size: contain;
+  }
+  &.eye-off {
+    background: url("../assets/expert/eye-off.png") no-repeat center;
+    background-size: contain;
+  }
+  &.pay-ali {
+    background: url("../assets/account/pay-ali.png") no-repeat center;
+    background-size: contain;
+  }
+  &.pay-wechat {
+    background: url("../assets/account/pay-wechat.png") no-repeat center;
+    background-size: contain;
+  }
+  &.checkbox-x {
+    background: url("../assets/account/checkbox-x.png") no-repeat center;
+    background-size: contain;
+  }
+  &.checkbox-o {
+    background: url("../assets/account/checkbox-o.png") no-repeat center;
+    background-size: contain;
+  }
+  &.notice-icon {
+    background: url("../assets/account/ring.png") no-repeat center;
+    background-size: contain;
+  }
+  &.calendar {
+    background: url("../assets/public/calendar.png") no-repeat center;
+    background-size: contain;
+  }
+  &.arrow-right {
+    background: url("../assets/public/arrow-right.png") no-repeat center;
+    background-size: contain;
+  }
+}

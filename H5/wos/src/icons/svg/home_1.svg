@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <filter id="形状_6" x="12" y="11.827" width="40.009" height="42.76" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur result="blur"/>
+      <feFlood flood-color="#cb3838"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_1918" data-name="组 1918" transform="translate(-43 -2840)">
+    <circle id="椭圆_4" data-name="椭圆 4" cx="32" cy="32" r="32" transform="translate(43 2840)" fill="#e23d3d"/>
+    <g transform="matrix(1, 0, 0, 1, 43, 2840)" filter="url(#形状_6)">
+      <path id="形状_6-2" data-name="形状 6" d="M75.005,2882.792c8.174-.092,14.738-7.064,14.679-15.593s-6.718-15.4-14.893-15.372-14.786,6.954-14.786,15.483c.055,8.592,6.764,15.518,15,15.482Zm-6.033-23.541a10.372,10.372,0,0,1,12.06-.01,1.226,1.226,0,0,1,.494.788,1.263,1.263,0,0,1-.19.921,1.167,1.167,0,0,1-1.655.318,8.042,8.042,0,0,0-9.356,0,1.164,1.164,0,0,1-1.654-.308,1.264,1.264,0,0,1-.192-.92,1.229,1.229,0,0,1,.491-.79Zm-12.367,25.121,15.888,7.642a5.781,5.781,0,0,0,5.023,0l15.888-7.642a2.867,2.867,0,0,0,1.6-2.737,2.837,2.837,0,0,0-1.851-2.559l-3.954-1.441a17.043,17.043,0,0,1-28.391,0l-3.953,1.441A2.838,2.838,0,0,0,55,2881.633a2.867,2.867,0,0,0,1.6,2.738Zm0,0" transform="translate(-43 -2840)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

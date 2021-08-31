@@ -1,0 +1,117 @@
+@import './public.scss';
+@import './vant-ui.scss';
+@import './icons.scss';
+@import './button.scss';
+
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 0;
+  outline: none;
+}
+
+h1, h2, h3, h4 ,h5, h6  {font-family: "Hiragino Sans GB SemiBold" !important;}
+
+body,
+html {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  
+}
+
+html {
+  ::-webkit-scrollbar {
+    display: none;
+    /* Chrome Safari */
+  }
+
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  background-color: rgb(203, 243, 208);
+}
+
+body {
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto; 
+  background-color: $--background-color-base;
+  ::-webkit-scrollbar-track{
+    background:rgba(0,0,0,0);
+  }
+  ::-webkit-scrollbar-track-piece{
+    background:rgba(0,0,0,0);
+  }
+}
+
+.fiexed-router { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+.app-wrapper {
+  height: 100%;
+  position: relative;
+
+}
+
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-warpper {
+  background-image: linear-gradient(45deg, #23DD36 0%, #31B6E9 100%);
+  background-size: 100% 77px;
+  background-repeat: no-repeat;
+  .van-nav-bar {
+    background-color: transparent;
+  }
+}
+
+.footer-button {
+  margin: 0 30px;
+}
+
+.radio-img-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.custom-icon {
+  width: 41px;
+  height: 41px;
+  display: block;
+  &.online {
+    background: url("../assets/custom/online.png");
+    background-size: contain;
+  }
+  &.qq {
+    background: url("../assets/custom/qq.png");
+    background-size: contain;
+  }
+  &.wechat {
+    background: url("../assets/custom/wechat.png");
+    background-size: contain;
+  }
+  &.custom {
+    background: url("../assets/custom/custom.png");
+    background-size: contain;
+  }
+}

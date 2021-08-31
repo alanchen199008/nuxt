@@ -1,0 +1,33 @@
+.odds-list {
+  font-size: 12px;
+  text-align: center;
+  line-height: 29px;
+  .first {
+    width: 75px;
+  }
+  &-head {
+    line-height: 38px;
+    padding-right: 12px;
+    margin-top: -10px;
+  }
+
+  &-item {
+    background-color: #fff;
+    margin-bottom: 10px;
+    &.status-list {
+      & > div:last-child {
+        padding: 10px 0;
+      }
+    }
+    & .name{
+      line-height: 16px;
+      color: $--color-text-primary;
+      padding: 0 10px;
+      word-break: break-all;
+    }
+    & .change-img {
+      width: 6px;
+      height: 8px;
+    }
+  }
+}

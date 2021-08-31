@@ -1,0 +1,7 @@
+export { default as ForecastTab } from './ForecastTab'
+export { default as InfoTab } from './InfoTab'
+export { default as LiveTab } from './LiveTab'
+export { default as ChatTab } from './ChatTab'
+export { default as BaseTab } from './BaseTab'
+export { default as OddsTab } from './OddsTab'
+export { default as RecommentTab } from './RecommentTab'

@@ -1,0 +1,25 @@
+button{
+  &.tag-button{
+    width: 80px;
+    height: 35px;
+    background: #F6F6F6;
+    color: #333;
+    border-radius: 35px;
+    font-size: 13px;
+    border: 1px solid #F6F6F6;
+    &.active{
+      color: #00C8B0;
+      background: #F2FCFB;
+      border: 1px solid #00C8B0;
+    }
+  } 
+}
+
+
+.liner-gradient {
+  font-size: 18px;
+  color: #fff;
+  border: 0;
+  background: url(../assets/public/button-gradient-large.png) center no-repeat;
+  background-size: cover;
+}
