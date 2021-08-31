@@ -34,6 +34,21 @@ export default {
     '~/plugins/axios'
   ],
 
+  axios:{
+    // proxy: true, // Can be also an object with default options
+    proxy: [
+      [
+        '/api',{
+          // target: 'http://localhost:9000',
+          target: 'https://elm-api.caibowen.net',
+          changeOrigin: true,
+          pathRewrite: { '^/api' : '/' }
+        }
+      ]
+    ],
+
+  },
+
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 

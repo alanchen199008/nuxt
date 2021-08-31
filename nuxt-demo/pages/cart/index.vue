@@ -47,20 +47,29 @@ import {
   import * as shoppingApi from "~/assets/services/shopping";
 
 export default {
+  metaInfo: {
+    title: 'Foo Bar'
+  },
+  // 独立设置head信息
+  head(){
+      return{
+        title:'购物车',
+        meta:[
+          {hid:'description',name:'news',content:'This is news page'}
+        ]
+      }
+  },
   components: {
     [Card.name]: Card,
     [Checkbox.name]: Checkbox,
     [SubmitBar.name]: SubmitBar,
     [CheckboxGroup.name]: CheckboxGroup
   },
-  async asyncData() {
+  async asyncData({ app }) {
       const {
         data
       } = await restaurants();
-      // console.log(data)
-      // data.map(item => {
-      //   item.image_path = config.IMG_URL + item.image_path;
-      // });
+      // const { data } = await app.$axios.$get('/api/shopping/restaurants')
       return {
         goods: data
       };
@@ -68,19 +77,17 @@ export default {
   data() {
     return {
       checkedGoods: [],
-      goods: [
-        // {
-        //   id: '1',
-        //   title: '进口香蕉',
-        //   desc: '约250g，2根',
-        //   price: 200,
-        //   num: 1,
-        //   thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg'
-        // }
-      ]
+      goods: []
     };
   },
+  async mounted() {
+    // const {
+    //   data
+    // } = await restaurants();
+    // // const { data } = await this.$axios.$get('/api/shopping/restaurants')
+    // this.goods=data
 
+  },
   computed: {
     submitBarText() {
       const count = this.checkedGoods.length;
@@ -88,8 +95,6 @@ export default {
     },
 
     totalPrice() {
-      // return this.goods.reduce((total, item) => total + (this.checkedGoods.indexOf(item.id) !== -1 ? item.price : 0), 0);\
- 
       return this.goods.reduce((total, item) => {
         return total + (this.checkedGoods.indexOf(item.id) !== -1 ? parseFloat(item.float_delivery_fee) : 0)
       }, 0);
@@ -97,12 +102,6 @@ export default {
     }
   },
   filters: {
-    // formatPrice: function (value) {
-    //   return (price / 100).toFixed(2);
-    // },
-    // filePath:function(value) {
-    //   return config.IMG_URL + value
-    // }
   },
   methods: {
     formatPrice(price) {

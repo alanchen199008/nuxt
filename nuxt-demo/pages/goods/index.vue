@@ -92,10 +92,6 @@ export default {
   mounted() {
     console.log(this.$route.params)
   },
-  // asyncData ({ app }, callback) {
-  //   // app.head.title = 'new title'
-  //   // callback(null, {})
-  // },
   data() {
     return {
       title:this.$route.params.title,

@@ -1,0 +1,16 @@
+git 账号
+alen-gib
+12345678@
+123456789@
+alanchen123
+
+jenkins
+http://wosjenkins.wosprdapp.net:8080/
+wos-prod   Prod&@4516
+
+
+http://1011.hlsplay.aodianyun.com/demo/game.flv
+
+
+alanchen123
+a123456

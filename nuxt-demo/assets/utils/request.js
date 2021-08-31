@@ -5,6 +5,7 @@ import { Toast } from 'vant';
 axios.defaults.baseURL = config.BASE_URL;
 axios.defaults.timeout = config.TIMEOUT;
 axios.defaults.headers = config.HEADERS;
+config.IS_RELEASE=false
 
 // 请求拦截器
 axios.interceptors.request.use( request => {

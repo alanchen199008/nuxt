@@ -2,6 +2,7 @@
   <div>
     <div class="barrages">
       <div class="video-player-box" 
+          v-if="playerOptions"
           @play="onPlayerPlay($event)"
           @pause="onPlayerPause($event)"
           @ready="playerReadied"
@@ -57,7 +58,9 @@
             fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
             sources: [{
               type: "",//这里的种类支持很多种：基本视频格式、直播、流媒体等，具体可以参看git网址项目
-              src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm" //url地址
+              src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm", //url地址
+              // type: "application/x-mpegURL",
+              // src: "http://cctvalih5ca.v.myalicdn.com/live/cctalv1_2/index.m3u8"
             }],
             poster: "https://alifei05.cfp.cn/creative/vcg/veer/1600water/veer-311488864.jpg", //你的封面地址
             // width: document.documentElement.clientWidth, //播放器宽度
