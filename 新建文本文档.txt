@@ -1,0 +1,168 @@
+https://blog.csdn.net/xu2034029667/article/details/82947849?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.base&spm=1001.2101.3001.4242
+https://github.com/amfe/lib-flexible
+适配rem
+https://blog.csdn.net/g1197410313/article/details/107727431
+https://blog.csdn.net/leoyajun/article/details/102501893
+
+https://youzan.github.io/vant/#/zh-CN/coupon-list
+
+
+https://www.cnblogs.com/yoona-lin/p/14985189.html
+
+https://github.com/youzan/vant
+
+
+视频
+https://blog.csdn.net/lengye7/article/details/87482023
+https://gitee.com/peakxin/h5-live/
+https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/StreamingMediaGuide/FrequentlyAskedQuestions/FrequentlyAskedQuestions.html
+
+https://github.com/lvming6816077/LMVideoTest/
+https://github.com/arut/nginx-rtmp-module
+
+https://zhuanlan.zhihu.com/p/27690199
+https://zhuanlan.zhihu.com/p/27690199
+
+https://blog.csdn.net/wxr15732623310/article/details/80114517
+
+
+
+
+https://segmentfault.com/a/1190000008916399
+https://github.com/ityufeng/h5live
+https://github.com/452010348/live_streaming
+https://github.com/illuspas/Node-Media-Server/blob/master/README_CN.md
+
+https://www.jb51.net/article/204443.htm
+ffmpeg -re -i 1.mp4 -c copy -f flv rtmp://localhost:1935/live/STREAM_NAME
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+{
+      "domain": "172.16.11.15",
+      "code": "TYCC"
+    },
+
+
+npm
+https://www.cnblogs.com/gaoguowen/p/9621084.html
+
+nuxt
+https://blog.csdn.net/ma_jiang/article/details/84645557
+https://gitee.com/markowner/nuxt-elm/
+
+https://segmentfault.com/a/1190000019909396
+
+webpack
+npm view less-loader@5.0.0 peerDependencies
+https://www.jianshu.com/p/ca507ece4e73
+
+
+websoket
+https://blog.csdn.net/jx950915/article/details/83088349
+https://blog.51cto.com/u_15091652/2603366
+
+openssl
+https://blog.csdn.net/benben_2015/article/details/80633073
+
+
+SSL SSL_connect: Connection was aborted in connection to github.com:443
+git config --global http.postBuffer 524288000
+
+koa
+https://github.com/mly-zju/simpleKoa
+https://zhuanlan.zhihu.com/p/35040744
+
+python 安装
+cnpm install --global --production windows-build-tools
+安装 rimraf
+npm install rimraf -g 
+
+// 使用命令删除 
+rimraf node_modules // 也可以删除其它文件夹或文件
+
+mysql
+https://www.cnblogs.com/winton-nfs/p/11524007.html
+https://www.cnblogs.com/suke99/p/5311687.html
+=c*Nxf&sy1hj
+
+mysql -u root -p
+alter user 'root'@'localhost' identified by '123456';
+
+set password for root@localhost = password('root');
+set password for `root`@`localhost` = password(`root`); 
+mysqladmin -uroot -prgpeiUH-y3<Z; password 123456
+
+①安装服务：mysqld --install
+②初始化：　mysqld --initialize --console
+③开启服务：net start mysql
+④关闭服务：net stop mysql
+⑤登录mysql：mysql -u root -p
+Enter PassWord：(密码)
+⑥修改密码：alter user 'root'@'localhost' identified by 'root';(by 接着的是密码)
+⑦标记删除mysql服务：sc delete mysql
+https://blog.csdn.net/yulutian/article/details/78971369?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.base&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.base
+
+https://blog.csdn.net/u012604745/article/details/80632860
+
+nativepath
+https://blog.csdn.net/Lian_Easel/article/details/78734240
+
+
+git  
+git checkout . 还原所有修改
+
+websocket
+https://www.cnblogs.com/gxp69/archive/2019/10/25/11736749.html
+
+/**
+ * 一键粘贴
+ * @param  {String} id [需要粘贴的内容]
+ * @param  {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接]
+ *
+ * range + selection
+ *
+ * 1.创建一个 range
+ * 2.把内容放入 range
+ * 3.把 range 放入 selection
+ *
+ * 注意：参数 attr 不能是自定义属性
+ * 注意：对于 user-select: none 的元素无效
+ * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容
+ */
+copy (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement('div');
+        target.id = 'tempTarget';
+        target.style.opacity = '0';
+        if (id) {
+            let curNode = document.querySelector('#' + id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector('#' + id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        console.log('复制成功')
+    } catch (e) {
+        console.log('复制失败')
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+}
+
+
+
