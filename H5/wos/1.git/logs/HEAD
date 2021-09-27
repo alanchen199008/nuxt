@@ -1,0 +1,104 @@
+0000000000000000000000000000000000000000 cda99f5c187e2d0e9c1b3f62cabed75004668a78 alanchen <alanchen199008@sina.com> 1629950683 +0800	clone: from http://weprogit.theclzb.net/wos-frontend/wosproject-h5.git
+cda99f5c187e2d0e9c1b3f62cabed75004668a78 b254ab502d61359dc101b532c468c49a5e60a9a1 alanchen <alanchen199008@sina.com> 1629951378 +0800	checkout: moving from master to uat
+b254ab502d61359dc101b532c468c49a5e60a9a1 b254ab502d61359dc101b532c468c49a5e60a9a1 alanchen <alanchen199008@sina.com> 1629963698 +0800	checkout: moving from uat to uat-alan
+b254ab502d61359dc101b532c468c49a5e60a9a1 b254ab502d61359dc101b532c468c49a5e60a9a1 alanchen <alanchen199008@sina.com> 1629963712 +0800	checkout: moving from uat-alan to uat
+b254ab502d61359dc101b532c468c49a5e60a9a1 b254ab502d61359dc101b532c468c49a5e60a9a1 alanchen <alanchen199008@sina.com> 1629963764 +0800	checkout: moving from uat to uat-alan
+b254ab502d61359dc101b532c468c49a5e60a9a1 dcf608660e68f4c3da34d159a685cccd6053e059 alanchen <alanchen199008@sina.com> 1630030900 +0800	commit: 修改bug
+dcf608660e68f4c3da34d159a685cccd6053e059 b254ab502d61359dc101b532c468c49a5e60a9a1 alanchen <alanchen199008@sina.com> 1630061446 +0800	checkout: moving from uat-alan to uat
+b254ab502d61359dc101b532c468c49a5e60a9a1 dcf608660e68f4c3da34d159a685cccd6053e059 alanchen <alanchen199008@sina.com> 1630061462 +0800	merge uat-alan: Fast-forward
+dcf608660e68f4c3da34d159a685cccd6053e059 993cde4fcfeed1374641464f835a1b4ed6686150 alanchen <alanchen199008@sina.com> 1630116079 +0800	commit: 本地配置
+993cde4fcfeed1374641464f835a1b4ed6686150 1b9a054d4166fa0e4be0513a676d70231a70a6dd alanchen <alanchen199008@sina.com> 1630141763 +0800	commit: 直播播放处理
+1b9a054d4166fa0e4be0513a676d70231a70a6dd cda99f5c187e2d0e9c1b3f62cabed75004668a78 alanchen <alanchen199008@sina.com> 1630290388 +0800	checkout: moving from uat to master
+cda99f5c187e2d0e9c1b3f62cabed75004668a78 cda99f5c187e2d0e9c1b3f62cabed75004668a78 alanchen <alanchen199008@sina.com> 1630292040 +0800	reset: moving to HEAD
+cda99f5c187e2d0e9c1b3f62cabed75004668a78 d0146fa9820a947aa20729549996042ec598d124 alanchen <alanchen199008@sina.com> 1630292293 +0800	reset: moving to HEAD^
+d0146fa9820a947aa20729549996042ec598d124 8f0a3d7183c459ab894d6976417995cda7edb7ca alanchen <alanchen199008@sina.com> 1630292718 +0800	pull: Fast-forward
+8f0a3d7183c459ab894d6976417995cda7edb7ca 1b9a054d4166fa0e4be0513a676d70231a70a6dd alanchen <alanchen199008@sina.com> 1630292788 +0800	checkout: moving from master to uat
+1b9a054d4166fa0e4be0513a676d70231a70a6dd 2f1976ce422d1113d7bc8adc73a71612f3d741b4 alanchen <alanchen199008@sina.com> 1630308660 +0800	commit: 隐藏banner，首页渐变，设置音乐跳转错误
+2f1976ce422d1113d7bc8adc73a71612f3d741b4 d5955ff56ed13361e6bee8bf3b6faa76849b1e31 alanchen <alanchen199008@sina.com> 1630323136 +0800	commit: 解决报错问题
+d5955ff56ed13361e6bee8bf3b6faa76849b1e31 3bd06179f12c96e01e4b8fe4ce8cd93b6946a903 alanchen <alanchen199008@sina.com> 1630464903 +0800	commit: 修改欧冠bug
+3bd06179f12c96e01e4b8fe4ce8cd93b6946a903 446e56ae79eab3ea72e2d3a774a62e5b7367d67a alanchen <alanchen199008@sina.com> 1630564623 +0800	commit: 联赛
+446e56ae79eab3ea72e2d3a774a62e5b7367d67a 3dc0377f339e3ee61c1c6f95944fade4c246da6c alanchen <alanchen199008@sina.com> 1630651753 +0800	commit: 联赛模板
+3dc0377f339e3ee61c1c6f95944fade4c246da6c 60966373699c8d3f352f9a1708521cbb7459e7a6 alanchen <alanchen199008@sina.com> 1630667122 +0800	commit: 联赛筛选改版
+60966373699c8d3f352f9a1708521cbb7459e7a6 8391d218f5eca969784798fd4d632dc56b206f63 alanchen <alanchen199008@sina.com> 1630894401 +0800	commit: 修改bug
+8391d218f5eca969784798fd4d632dc56b206f63 6da01e528becb5266eed6a778007f38e010320ab alanchen <alanchen199008@sina.com> 1630919366 +0800	commit: h5专题
+6da01e528becb5266eed6a778007f38e010320ab 01a8cc7ee21467d7c58bbba22c25f7ee6ef40832 alanchen <alanchen199008@sina.com> 1630928791 +0800	commit: yan
+01a8cc7ee21467d7c58bbba22c25f7ee6ef40832 7e9590b5520a93415edc51c978cfb0b57974587a alanchen <alanchen199008@sina.com> 1630982924 +0800	commit: 添加背景图
+7e9590b5520a93415edc51c978cfb0b57974587a 7e9590b5520a93415edc51c978cfb0b57974587a alanchen <alanchen199008@sina.com> 1631088462 +0800	checkout: moving from uat to uat-1
+7e9590b5520a93415edc51c978cfb0b57974587a 03ca72ce8b14e44762de7a90ebbaac20fcaf0fe0 alanchen <alanchen199008@sina.com> 1631088483 +0800	commit: 暂存
+03ca72ce8b14e44762de7a90ebbaac20fcaf0fe0 7e9590b5520a93415edc51c978cfb0b57974587a alanchen <alanchen199008@sina.com> 1631088493 +0800	checkout: moving from uat-1 to uat
+7e9590b5520a93415edc51c978cfb0b57974587a 804f31f8eda61356d57eef58de4f4ac2c6c3155f alanchen <alanchen199008@sina.com> 1631101463 +0800	commit: 5大联赛首页模板跳转
+804f31f8eda61356d57eef58de4f4ac2c6c3155f 53c40ca3f389a9a7ab4f8ccec42bc6360eab045d alanchen <alanchen199008@sina.com> 1631102078 +0800	commit: 解决bug
+53c40ca3f389a9a7ab4f8ccec42bc6360eab045d 2e61110311827c2a4c8085ec648b367aa5cde99a alanchen <alanchen199008@sina.com> 1631152977 +0800	commit: h5模板跳转修正
+2e61110311827c2a4c8085ec648b367aa5cde99a fa3d93195ec31ab5428f9f75c4804083318cc5da alanchen <alanchen199008@sina.com> 1631154377 +0800	commit: 修正安卓跳转
+fa3d93195ec31ab5428f9f75c4804083318cc5da 755f421cba78e43b382703e8f12672843803336d alanchen <alanchen199008@sina.com> 1631154598 +0800	commit: 修正安卓跳转返回
+755f421cba78e43b382703e8f12672843803336d fd241f11f21f0a7916bd727c4cd43ccd8e4f3a7c alanchen <alanchen199008@sina.com> 1631156537 +0800	commit: 添加测试环境资讯
+fd241f11f21f0a7916bd727c4cd43ccd8e4f3a7c 7b76105694a2e3997c0f33839532f4e3d47ca36b alanchen <alanchen199008@sina.com> 1631158979 +0800	commit: 修改
+7b76105694a2e3997c0f33839532f4e3d47ca36b 4d52cf2eb2cf044d2ccd156646e19eceaab3f43a alanchen <alanchen199008@sina.com> 1631159233 +0800	commit: 解决欧冠bug
+4d52cf2eb2cf044d2ccd156646e19eceaab3f43a 1eba7e4cf4e131af8ccf7ba0c3ea663772e7ca80 alanchen <alanchen199008@sina.com> 1631159725 +0800	commit: 修改
+1eba7e4cf4e131af8ccf7ba0c3ea663772e7ca80 dcf608660e68f4c3da34d159a685cccd6053e059 alanchen <alanchen199008@sina.com> 1631159758 +0800	checkout: moving from uat to uat-alan
+dcf608660e68f4c3da34d159a685cccd6053e059 1eba7e4cf4e131af8ccf7ba0c3ea663772e7ca80 alanchen <alanchen199008@sina.com> 1631159873 +0800	checkout: moving from uat-alan to uat
+1eba7e4cf4e131af8ccf7ba0c3ea663772e7ca80 1916c832776f79b0f4cd4591d923976b853c672a alanchen <alanchen199008@sina.com> 1631185218 +0800	commit: 修改
+1916c832776f79b0f4cd4591d923976b853c672a 2205162d012a87577abacbda2f982809ef738f90 alanchen <alanchen199008@sina.com> 1631242711 +0800	commit: 修改
+2205162d012a87577abacbda2f982809ef738f90 9f598ce6888b1a0a859522573ff8b8eae58e3830 alanchen <alanchen199008@sina.com> 1631244491 +0800	commit: 修改
+9f598ce6888b1a0a859522573ff8b8eae58e3830 afac6ad1fbe1410f2bea6ef314dfc087df46dd7c alanchen <alanchen199008@sina.com> 1631246327 +0800	commit: 修改欧冠，隐藏积分射手
+afac6ad1fbe1410f2bea6ef314dfc087df46dd7c afac6ad1fbe1410f2bea6ef314dfc087df46dd7c alanchen <alanchen199008@sina.com> 1631253486 +0800	checkout: moving from uat to uat-1.0.4
+afac6ad1fbe1410f2bea6ef314dfc087df46dd7c ad5835b07897c87f41e7d9a3fdb66ec25986f09a alanchen <alanchen199008@sina.com> 1631253535 +0800	commit: cs
+ad5835b07897c87f41e7d9a3fdb66ec25986f09a 99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 alanchen <alanchen199008@sina.com> 1631258217 +0800	commit (merge): zc
+99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 afac6ad1fbe1410f2bea6ef314dfc087df46dd7c alanchen <alanchen199008@sina.com> 1631258228 +0800	checkout: moving from uat-1.0.4 to uat
+afac6ad1fbe1410f2bea6ef314dfc087df46dd7c 9a9aa299c346482721b84cb30979d21027dc6c92 alanchen <alanchen199008@sina.com> 1631261546 +0800	commit: uat 5大联赛
+9a9aa299c346482721b84cb30979d21027dc6c92 99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 alanchen <alanchen199008@sina.com> 1631261717 +0800	checkout: moving from uat to uat-1.0.4
+99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 9a9aa299c346482721b84cb30979d21027dc6c92 alanchen <alanchen199008@sina.com> 1631263044 +0800	checkout: moving from uat-1.0.4 to uat
+9a9aa299c346482721b84cb30979d21027dc6c92 a8a17d2685db5dfb8825fda400381fbd90bdd31b alanchen <alanchen199008@sina.com> 1631263118 +0800	commit: 隐藏banner
+a8a17d2685db5dfb8825fda400381fbd90bdd31b 99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 alanchen <alanchen199008@sina.com> 1631263183 +0800	checkout: moving from uat to uat-1.0.4
+99bff4d44e3ada9d3c1abb4b682bdb9b3d511f77 f07013f381ffd4ff76c7c8e2206fe8dad09ca8f5 alanchen <alanchen199008@sina.com> 1631266595 +0800	commit: 修改
+f07013f381ffd4ff76c7c8e2206fe8dad09ca8f5 a8a17d2685db5dfb8825fda400381fbd90bdd31b alanchen <alanchen199008@sina.com> 1631266609 +0800	checkout: moving from uat-1.0.4 to uat
+a8a17d2685db5dfb8825fda400381fbd90bdd31b b1f79a3e3b1abad64ca626f3427c08415bbd84ef alanchen <alanchen199008@sina.com> 1631266951 +0800	commit: 修复切换方案id不更新
+b1f79a3e3b1abad64ca626f3427c08415bbd84ef f07013f381ffd4ff76c7c8e2206fe8dad09ca8f5 alanchen <alanchen199008@sina.com> 1631271033 +0800	checkout: moving from uat to uat-1.0.4
+f07013f381ffd4ff76c7c8e2206fe8dad09ca8f5 9d85df021fb2fb4a962a9f6d627fe5a66e198ccd alanchen <alanchen199008@sina.com> 1631327297 +0800	commit: 修改
+9d85df021fb2fb4a962a9f6d627fe5a66e198ccd 8f0a3d7183c459ab894d6976417995cda7edb7ca alanchen <alanchen199008@sina.com> 1631327311 +0800	checkout: moving from uat-1.0.4 to master
+8f0a3d7183c459ab894d6976417995cda7edb7ca 03fe573638f129d774e545ec681f60aadf1adcdc alanchen <alanchen199008@sina.com> 1631327343 +0800	pull: Fast-forward
+03fe573638f129d774e545ec681f60aadf1adcdc 49c083594903e30bb4bed804bd4339757847110f alanchen <alanchen199008@sina.com> 1631327498 +0800	commit (merge): 合并uat
+49c083594903e30bb4bed804bd4339757847110f 9d85df021fb2fb4a962a9f6d627fe5a66e198ccd alanchen <alanchen199008@sina.com> 1631327737 +0800	checkout: moving from master to uat-1.0.4
+9d85df021fb2fb4a962a9f6d627fe5a66e198ccd 49c083594903e30bb4bed804bd4339757847110f alanchen <alanchen199008@sina.com> 1631328018 +0800	checkout: moving from uat-1.0.4 to master
+49c083594903e30bb4bed804bd4339757847110f 9d85df021fb2fb4a962a9f6d627fe5a66e198ccd alanchen <alanchen199008@sina.com> 1631330769 +0800	checkout: moving from master to uat-1.0.4
+9d85df021fb2fb4a962a9f6d627fe5a66e198ccd 5404852639357b8c18d128938055412c17c7780c alanchen <alanchen199008@sina.com> 1631331182 +0800	commit: zc
+5404852639357b8c18d128938055412c17c7780c b1f79a3e3b1abad64ca626f3427c08415bbd84ef alanchen <alanchen199008@sina.com> 1631331195 +0800	checkout: moving from uat-1.0.4 to uat
+b1f79a3e3b1abad64ca626f3427c08415bbd84ef 5ddc9291b41398a6539c2268e14e020bba7d8cba alanchen <alanchen199008@sina.com> 1631331400 +0800	commit: 清楚轮次重复数据
+5ddc9291b41398a6539c2268e14e020bba7d8cba 49c083594903e30bb4bed804bd4339757847110f alanchen <alanchen199008@sina.com> 1631331531 +0800	checkout: moving from uat to master
+49c083594903e30bb4bed804bd4339757847110f b8fa81a4af68a57e62ba307d67d9e95b2abad782 alanchen <alanchen199008@sina.com> 1631331785 +0800	commit (merge): 清楚轮次重复数据
+b8fa81a4af68a57e62ba307d67d9e95b2abad782 5ddc9291b41398a6539c2268e14e020bba7d8cba alanchen <alanchen199008@sina.com> 1631332397 +0800	checkout: moving from master to uat
+5ddc9291b41398a6539c2268e14e020bba7d8cba 5404852639357b8c18d128938055412c17c7780c alanchen <alanchen199008@sina.com> 1631339109 +0800	checkout: moving from uat to uat-1.0.4
+5404852639357b8c18d128938055412c17c7780c 3d40e5a7642b2fe7a99fbfbfa40da45108be502b alanchen <alanchen199008@sina.com> 1631689192 +0800	commit: 发版专题
+3d40e5a7642b2fe7a99fbfbfa40da45108be502b 5ddc9291b41398a6539c2268e14e020bba7d8cba alanchen <alanchen199008@sina.com> 1631689200 +0800	checkout: moving from uat-1.0.4 to uat
+5ddc9291b41398a6539c2268e14e020bba7d8cba 2195c96ac82cd408a620f0cb634f3af452fde05d alanchen <alanchen199008@sina.com> 1631693031 +0800	commit: 修改射手接口积分欧冠接口
+2195c96ac82cd408a620f0cb634f3af452fde05d 3d40e5a7642b2fe7a99fbfbfa40da45108be502b alanchen <alanchen199008@sina.com> 1631693060 +0800	checkout: moving from uat to uat-1.0.4
+3d40e5a7642b2fe7a99fbfbfa40da45108be502b 9b7bda822cc05cedc6128ccb25a0a720b93ad867 alanchen <alanchen199008@sina.com> 1631696896 +0800	commit: 修改
+9b7bda822cc05cedc6128ccb25a0a720b93ad867 2195c96ac82cd408a620f0cb634f3af452fde05d alanchen <alanchen199008@sina.com> 1631696918 +0800	checkout: moving from uat-1.0.4 to uat
+2195c96ac82cd408a620f0cb634f3af452fde05d 2195c96ac82cd408a620f0cb634f3af452fde05d alanchen <alanchen199008@sina.com> 1631696946 +0800	checkout: moving from uat to uat-sjs
+2195c96ac82cd408a620f0cb634f3af452fde05d 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631704736 +0800	commit: 修复bug
+285aed0b7cd31c2e2d6e334e5d830be480175484 2195c96ac82cd408a620f0cb634f3af452fde05d alanchen <alanchen199008@sina.com> 1631704745 +0800	checkout: moving from uat-sjs to uat
+2195c96ac82cd408a620f0cb634f3af452fde05d 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631704757 +0800	merge uat-sjs: Fast-forward
+285aed0b7cd31c2e2d6e334e5d830be480175484 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631704936 +0800	checkout: moving from uat to uat-sjs
+285aed0b7cd31c2e2d6e334e5d830be480175484 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631776199 +0800	checkout: moving from uat-sjs to uat
+285aed0b7cd31c2e2d6e334e5d830be480175484 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631776262 +0800	checkout: moving from uat to uat-sjs
+285aed0b7cd31c2e2d6e334e5d830be480175484 9e7a34e0fea3efd25085a94c05874d70520fa9e1 alanchen <alanchen199008@sina.com> 1631776283 +0800	commit: 暂存
+9e7a34e0fea3efd25085a94c05874d70520fa9e1 285aed0b7cd31c2e2d6e334e5d830be480175484 alanchen <alanchen199008@sina.com> 1631776308 +0800	checkout: moving from uat-sjs to uat
+285aed0b7cd31c2e2d6e334e5d830be480175484 071c881e7fd0374404143c2698f1438189846a89 alanchen <alanchen199008@sina.com> 1631776806 +0800	commit: 修改
+071c881e7fd0374404143c2698f1438189846a89 f4a4d3a0d25ce37ae010c1cabad667764b0f95a2 alanchen <alanchen199008@sina.com> 1631777465 +0800	commit: 暂无数据处理
+f4a4d3a0d25ce37ae010c1cabad667764b0f95a2 9e7a34e0fea3efd25085a94c05874d70520fa9e1 alanchen <alanchen199008@sina.com> 1631777625 +0800	checkout: moving from uat to uat-sjs
+9e7a34e0fea3efd25085a94c05874d70520fa9e1 506831b8f057dac9042bfc6a5faef32e742f2d83 alanchen <alanchen199008@sina.com> 1631777877 +0800	commit: 修改
+506831b8f057dac9042bfc6a5faef32e742f2d83 f4a4d3a0d25ce37ae010c1cabad667764b0f95a2 alanchen <alanchen199008@sina.com> 1631777883 +0800	checkout: moving from uat-sjs to uat
+f4a4d3a0d25ce37ae010c1cabad667764b0f95a2 30f18e6b9a0a36d8f7d7fdfab256d244e7bdfe0c alanchen <alanchen199008@sina.com> 1631777994 +0800	commit: 解决下拉值没更新
+30f18e6b9a0a36d8f7d7fdfab256d244e7bdfe0c 506831b8f057dac9042bfc6a5faef32e742f2d83 alanchen <alanchen199008@sina.com> 1631778101 +0800	checkout: moving from uat to uat-sjs
+506831b8f057dac9042bfc6a5faef32e742f2d83 56af5399c13d4233ac074870a56f915fee34fb11 alanchen <alanchen199008@sina.com> 1631958751 +0800	commit: 世预赛
+56af5399c13d4233ac074870a56f915fee34fb11 164733e1ac92a69ad4939bb5f3ec90a4d6acd56b alanchen <alanchen199008@sina.com> 1632277099 +0800	commit: 暂存
+164733e1ac92a69ad4939bb5f3ec90a4d6acd56b 9b7bda822cc05cedc6128ccb25a0a720b93ad867 alanchen <alanchen199008@sina.com> 1632277110 +0800	checkout: moving from uat-sjs to uat-1.0.4
+9b7bda822cc05cedc6128ccb25a0a720b93ad867 8612cd071464396c26ea5a31341f00a33f6e02b6 alanchen <alanchen199008@sina.com> 1632280428 +0800	commit: 发布主推处理
+8612cd071464396c26ea5a31341f00a33f6e02b6 164733e1ac92a69ad4939bb5f3ec90a4d6acd56b alanchen <alanchen199008@sina.com> 1632280438 +0800	checkout: moving from uat-1.0.4 to uat-sjs
+164733e1ac92a69ad4939bb5f3ec90a4d6acd56b 0f742972bf8ddb2e75f8069de646d6470ef8db46 alanchen <alanchen199008@sina.com> 1632281921 +0800	commit: 增加uat新闻id
+0f742972bf8ddb2e75f8069de646d6470ef8db46 8612cd071464396c26ea5a31341f00a33f6e02b6 alanchen <alanchen199008@sina.com> 1632281933 +0800	checkout: moving from uat-sjs to uat-1.0.4
+8612cd071464396c26ea5a31341f00a33f6e02b6 d9feda6ea72e63b2f466d611ab86c69ef76c32fa alanchen <alanchen199008@sina.com> 1632292238 +0800	commit: 暂存
+d9feda6ea72e63b2f466d611ab86c69ef76c32fa 0f742972bf8ddb2e75f8069de646d6470ef8db46 alanchen <alanchen199008@sina.com> 1632292286 +0800	checkout: moving from uat-1.0.4 to uat-sjs
+0f742972bf8ddb2e75f8069de646d6470ef8db46 a2852cbeaad0edeb603dcf3f000dab2d483c9bcb alanchen <alanchen199008@sina.com> 1632293015 +0800	commit: 添加推荐id
+a2852cbeaad0edeb603dcf3f000dab2d483c9bcb d9feda6ea72e63b2f466d611ab86c69ef76c32fa alanchen <alanchen199008@sina.com> 1632293028 +0800	checkout: moving from uat-sjs to uat-1.0.4
+d9feda6ea72e63b2f466d611ab86c69ef76c32fa 47a4b596aacaa9e07eaf6b43e66cdb808a9d2026 alanchen <alanchen199008@sina.com> 1632453198 +0800	commit: 详情改造
