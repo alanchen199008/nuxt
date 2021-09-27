@@ -182,3 +182,11 @@ export const getListItemsRecommendCount = params => {
     params
   })
 }
+
+export const getCompetitionRuleInfo = params => {
+  return request({
+    url: 'WOS-DATA-CENTER/noauth/football/competition/rule/info',
+    method: 'get',
+    params
+  })
+}

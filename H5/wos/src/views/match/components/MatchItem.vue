@@ -211,7 +211,7 @@ export default {
   font-size: 12px;
   background: #fff;
   color: #808080;
-  padding: 4px;
+  padding: 8px 10px 4px 10px;
   border-bottom: 1px solid #eee;
   &__left, &__right{
     width: 80px;
@@ -290,10 +290,18 @@ export default {
      vertical-align: middle;
   }
   .match-tag{
-    font-size: 12px;
-    border-radius: 3px;
-    color: #ff0000;
+    // font-size: 12px;
+    // border-radius: 3px;
+    // color: #ff0000;
     padding: 0 4px;
+
+    font-size: 10px;
+    color: #FF7F59;
+    width: 57px;
+    height: 28px;
+    background: #FFF5F2;
+    border: 1px solid #FFA891;
+    border-radius: 0px 0px 4px 4px;
   }
   .card-red{
     width: 15px;

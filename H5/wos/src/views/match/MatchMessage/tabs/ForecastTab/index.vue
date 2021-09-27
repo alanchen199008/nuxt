@@ -33,7 +33,7 @@
       </div>
     </div>
     <wos-card title="重要提示">
-      <div class="tips">
+      <!-- <div class="tips">
         <span>{{ tips.title ? tips.title : "暂无" }}</span>
         <template v-if="tips.homeWin.indexOf('undefined') > -1 && tips.draw.indexOf('undefined') > -1 && tips.awayWin.indexOf('undefined') > -1">
           暂无
@@ -66,6 +66,106 @@
           />
           <span>{{ tips.desc }}</span>
         </template>
+      </div> -->
+      <div class="info-item">
+        <div class="left">竞彩SP</div>
+        <div class="right">2.15 3.30 2.87 主(-1)2.87 3.60 1.95</div>
+      </div>
+      <div class="info-item">
+        <div class="left">欧赔</div>
+        <div class="right tips">
+          <template v-if="tips.homeWin.indexOf('undefined') > -1 && tips.draw.indexOf('undefined') > -1 && tips.awayWin.indexOf('undefined') > -1">
+            暂无
+          </template>
+          <template v-else>
+            <span
+              :class=" tips.homeWin.indexOf('&darr;') > -1 ? 'down' : tips.homeWin.indexOf('&uarr;') > -1 ? 'up' : '' "
+              v-html="tips.homeWin"
+            >{{ tips.homeWin }}</span>
+            <span
+              class="van-hairline--left van-hairline--right"
+              :class="
+                tips.draw.indexOf('&darr;') > -1
+                  ? 'down'
+                  : tips.draw.indexOf('&uarr;') > -1
+                    ? 'up'
+                    : ''
+              "
+              v-html="tips.draw"
+            />
+            <span
+              :class="
+                tips.awayWin.indexOf('&darr;') > -1
+                  ? 'down'
+                  : tips.awayWin.indexOf('&uarr;') > -1
+                    ? 'up'
+                    : ''
+              "
+              v-html="tips.awayWin"
+            />
+            <span>{{ tips.desc }}</span>
+          </template>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="left">防冷</div>
+        <div class="right">客队过去14次巴甲打强队，有7次爆冷不败</div>
+      </div>
+      <div class="info-item">
+        <div class="left">主状态</div>
+        <div class="right">主队近6个主场场面占据上风</div>
+      </div>
+      <div class="info-item">
+        <div class="left">客状态</div>
+        <div class="right">客队近6个客场发挥不利</div>
+      </div>
+      <div class="info-item">
+        <div class="left">攻防</div>
+        <div class="right">主队防守不错，近4个主场仅丢1球</div>
+      </div>
+      <div class="info-item">
+        <div class="left">伤停</div>
+        <div class="right">客队主力守门员乔瓦尼尔蒂博</div>
+      </div>
+      <div class="info-item">
+        <div class="left">规律</div>
+        <div class="right">近76场相似盘口比赛，主胜占78%</div>
+      </div>
+      <div class="info-item">
+        <div class="left">上半场</div>
+        <div class="right">双方上半场有胶大可能打平</div>
+      </div>
+    </wos-card>
+    <wos-card title="亚盘规律">
+      <div class="info-item">
+        <div class="left">赛果规律</div>
+        <div class="right">胜38% 平33% 负29%</div>
+      </div>
+      <div class="info-item">
+        <div class="left">客状态</div>
+        <div class="right">客 -0.5 低水 上盘水位大升</div>
+      </div>
+      <div class="info-item">
+        <div class="left">基本面</div>
+        <div class="right">客队优势较大</div>
+      </div>
+      <div class="info-item">
+        <div class="left">分析场次</div>
+        <div class="right">10场</div>
+      </div>
+      <!-- <div class="info-item">
+        <div class="left">推荐</div>
+        <div class="right">-1负</div>
+      </div> -->
+    </wos-card>
+    <wos-card title="欧盘规律">
+      <div class="info-item">
+        <div class="left">赛果规律</div>
+        <div class="right">+1胜38% +1平33% +1负29%</div>
+      </div>
+      <div class="info-item">
+        <div class="left">分析场次</div>
+        <div class="right">66场(2017年以来竞彩)</div>
       </div>
     </wos-card>
     <!-- <wos-card title="本场盘口分析">暂无</wos-card> -->
@@ -499,12 +599,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.info-item {
+  display: flex;
+  font-size: 13px;
+  padding: 6px 13px;
+  // justify-content: space-between;
+  .left {
+    width: 60px;
+    margin-right: 14px;
+  }
+  .right {
+    color: #757575FF;
+  }
+}
 .forecast-tab-content {
   background: #f5f5f5;
-  padding: 15px 0;
+  padding: 10px 0;
   .forecast-data {
     background: #fff;
-    padding: 15px;
+    padding: 10px;
     height: 140px;
     .forecast-chart {
       width: 167px;
@@ -549,7 +662,8 @@ export default {
   }
   .tips {
     span {
-      padding: 0 8px;
+      // padding: 0 8px;
+      margin-right: 4px;
       &.down {
         color: #74c03d;
       }

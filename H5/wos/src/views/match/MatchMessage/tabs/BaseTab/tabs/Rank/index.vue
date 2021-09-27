@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="rank-container">
     <d-empty v-if="!rankitem.home && !rankitem.away && !rankList" />
     <template v-else>
@@ -7,16 +8,23 @@
       <rank-list v-if="rankList" :resource="rankList" :home-team-id="params.homeTeamId" :away-team-id="params.awayTeamId" />
     </template>
   </div>
+  <wos-card title="赛制说明" v-if="conpetitionRuleInfo">
+    <div style="white-space: pre-wrap;">
+      {{ conpetitionRuleInfo.text }}
+    </div>
+  </wos-card>
+</div>
 </template>
 
 <script>
 import RankItem from './rank-item'
 import RankList from './rank-list'
-import { getMatchBaseRank, getMatchBaseCompetitionRank } from '@/api/match'
+import WosCard from '@/components/WosCard'
+import { getMatchBaseRank, getMatchBaseCompetitionRank, getCompetitionRuleInfo } from '@/api/match'
 
 export default {
   inject: ['messageInstance'],
-  components: { RankItem, RankList },
+  components: { RankItem, RankList, WosCard },
   data() {
     return {
       params: {
@@ -34,7 +42,8 @@ export default {
         home: null,
         away: null
       },
-      rankList: null
+      rankList: null,
+      conpetitionRuleInfo: null
     }
   },
   created() {
@@ -44,6 +53,12 @@ export default {
       this.rankParams = { competitionId: competitionId, seasonId: seasonId, stageId: stageId, group: groupNum }
       this.fetch(this.params)
       this.fetchCompetition(this.rankParams)
+      getCompetitionRuleInfo({ 'competitionId': competitionId })
+        .then(([data, err]) => {
+          if (!err) {
+            this.conpetitionRuleInfo = data
+          }
+        })
     }
   },
   methods: {

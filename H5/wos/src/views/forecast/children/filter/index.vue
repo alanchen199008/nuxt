@@ -3,7 +3,7 @@
     <van-nav-bar title="筛选" left-arrow @click-left="$router.back(-1)" />
     <div class="forecast-filter-content">
       <div class="forecast-filter-main">
-        <div class="sort">
+        <!-- <div class="sort">
           <div class="title">赛事排序</div>
           <van-radio-group v-model="params.sort" @change="handleSort">
             <van-cell-group>
@@ -20,9 +20,9 @@
               </van-cell>
             </van-cell-group>
           </van-radio-group>
-        </div>
+        </div> -->
         <div class="competition">
-          <div class="title" flex="box:mean cross:center">
+          <!-- <div class="title" flex="box:mean cross:center">
             <div>
               <span>赛事</span>
               <small>已选 <font>{{ matchTimes }}</font> 场
@@ -46,7 +46,7 @@
               </van-tabs>
             </div>
             <div />
-          </div>
+          </div> -->
           <van-row type="flex" gutters="14" class="competition-list">
             <van-col v-for="(item, index) in items" :key="index" span="6">
               <button
@@ -61,6 +61,13 @@
       </div>
     </div>
     <div class="forecast-filter-footer van-hairline--top">
+      <div class="count-box">
+        已选<span class="num">{{ matchTimes }}</span>场比赛
+      </div>
+      <div class="filter-box">
+        <van-checkbox @click="handleSelectAll" v-model="selectAll" checked-color="#00B48DFF">全选</van-checkbox>
+        <van-checkbox @click="handleSelectFive" v-model="selectFive" checked-color="#00B48DFF">五大联赛</van-checkbox>
+      </div>
       <van-button type="primary" @click="handleSubmit"> 确定 </van-button>
     </div>
   </div>
@@ -74,6 +81,7 @@ export default {
   name: 'Forecastsetting',
   data() {
     return {
+      selectFive: false,
       params: {
         position: 0,
         sort: 1,
@@ -85,7 +93,7 @@ export default {
         type: 3,
         matchType: this.type,
         ids: [],
-        date: parseTime(new Date(), '{y}-{m}-{d}')
+        date: parseTime(new Date(), '{y}-{m}-{d}'),
       },
       predictionResultList: [
         { value: 1, name: '按比赛时间排序' },
@@ -125,6 +133,13 @@ export default {
     },
     checkedColor() {
       return variables.theme
+    },
+    selectAll: {
+      get() {
+        return this.params.competitionIds.length == this.items.length
+      },
+      set(value) {
+      }
     }
   },
   watch: {
@@ -202,11 +217,47 @@ export default {
         return item
       })
     },
+    // handleSelectAll() {
+    //   this.params.competitionIds = []
+    //   this.items.map(item => {
+    //     item.active = true
+    //     this.params.competitionIds.push(item.competitionId)
+    //     return item
+    //   })
+    // },
     handleSelectAll() {
+      let isSelectAll = false
+      if(this.selectAll === true){
+        
+      } else {
+        this.selectFive = false 
+        isSelectAll=true
+        this.selectAll = true
+      }
       this.params.competitionIds = []
       this.items.map(item => {
-        item.active = true
-        this.params.competitionIds.push(item.competitionId)
+        item.active = isSelectAll
+        item.active && this.params.competitionIds.push(item.competitionId)
+        return item
+      })
+      
+    },
+    handleSelectFive() {
+      if(this.selectFive === true){
+        this.selectAll = false
+      } else {
+
+      }
+
+      this.params.competitionIds = []
+      this.items.map(item => {
+        if(item.bigFive === 1){
+          item.active = this.selectFive
+        }else{
+          item.active = false
+        }
+        
+        item.active && this.params.competitionIds.push(item.competitionId)
         return item
       })
     },
@@ -327,10 +378,35 @@ export default {
     padding: 0 10px;
     background: #fff;
     text-align: right;
-    ::v-deep .van-button{
+    height: 54px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    ::v-deep .van-button {
       vertical-align: middle;
-      height: 35px;
-      line-height: 35px;
+      height: 37px;
+      width: 80px;
+      line-height: 37px;
+      font-size: 16px;
+    }
+    .count-box{
+      color: #A7A7A7FF;
+      margin-right: 18px;
+      .num{
+        color: #F2B53DFF;
+      }
+    }
+    .filter-box{
+      font-size: 14px;
+      display: flex;
+      .van-checkbox{
+        margin-right: 14px;
+      }
+      ::v-deep .van-radio__label,::v-deep .van-checkbox__label{
+        color: #040404FF;
+        margin-left: 5px;
+      }
     }
   }
 }

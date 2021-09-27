@@ -85,6 +85,15 @@ export const getLiveCompetitonList = params => {
     params
   })
 }
+// 获取足球联赛（近三天有比赛的联赛）
+export const getLiveCompetitonListNew = data => {
+  return request({
+    url: '/WOS-PREDICTION/noauth/expert/getLiveCompetitonList',
+    method: 'post',
+    data: data
+  })
+}
+
 export const getCompetitonList = data => {
   return request({
     url: '/WOS-DATA-CENTER/noauth/prediction/competition/config/list',
@@ -121,6 +130,15 @@ export const getMatchAttr = data => {
     url: '/WOS-PREDICTION/expert/footBallAttr',
     method: 'post',
     data
+  })
+}
+
+//推荐赛事列表
+export const getExpertMatchList = data => {
+  return request({
+    url: '/WOS-DATA-CENTER/noauth/football/expert/match/list',
+    method: 'post',
+    data: data
   })
 }
 
@@ -163,3 +181,4 @@ export const doExpertRemind = data => {
     data: data
   })
 }
+

@@ -53,9 +53,11 @@ export default {
       if (!this.memberId) {
         return window.__GLOBAL.LoginControlDialog.open()
       }
+      sessionStorage.removeItem('Match-Release-Filter-Params')
       getExpertIsSend()
         .then(([data, err]) => {
           if (!err) {
+            sessionStorage.setItem('isFirstSend', data === 0)
             this.$router.push({ name: 'ExpertRelease', params: { step: data === 0 ? 0 : 1, locale: this.$i18n.locale, from: this.$route.name }}).catch(() => {})
           }
         })

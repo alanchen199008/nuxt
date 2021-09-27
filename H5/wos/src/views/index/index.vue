@@ -14,27 +14,36 @@
         </template>
       </van-tab>
     </van-tabs>
-    <component :is="component" />
+    <component :is="componentName" :tabModel="tabModel" />
     <silde-left-view />
   </div>
 </template>
 
 <script>
 import { getMenus } from '@/api/app'
-import { getUrlKey } from '@/utils'
+import { getUrlKey, param2Obj } from '@/utils'
 import { Home, News } from './components'
 import FIFA from '../open/FIFA'
 import EFA from '../open/EFA'
 import ECC from '../open/ECC'
+import LM from '../open/LM'
 export default {
-  components: { Home, News, FIFA, EFA, ECC },
+  components: { Home, News, FIFA, EFA, ECC, LM },
   data() {
     return {
+      tabModel: null,
       component: 'Home',
       tabs: [
         { name: '综合', value: 'Home', icon: '', iconStatus: 1 },
         { name: '资讯', value: 'News', icon: '', iconStatus: 1 }
       ]
+    }
+  },
+  computed: {
+    componentName() {
+      let str = this.component
+      this.url = str
+      return param2Obj(str).tab || str
     }
   },
   created() {
@@ -48,18 +57,29 @@ export default {
     getData() {
       getMenus().then(([data, err]) => {
         if (!err) {
-          data = data.map(o => ({ ...o, value: getUrlKey('tab', o.link) }))
+          data = data.map(o => {
+            let value = getUrlKey('tab', o.link)
+            const matchType = getUrlKey('matchType', o.link)
+            if(matchType) {
+              value = o.link
+            }
+            return ({ ...o, value: value })
+          })
           this.tabs = this.tabs.concat(data)
         }
       })
     },
     beforeChange(name) {
       if (this.component !== name) {
+        this.tabModel
         this.tabs.map((item, index) => {
           if (name === index) {
             window.location.href = item.link
           } else {
             this.component = name
+          }
+          if(this.component == item.value){
+            this.tabModel = item
           }
           return item
         })

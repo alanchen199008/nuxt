@@ -1,16 +1,58 @@
 <template>
   <div class="release-recommned fh" flex="dir:top box:justify">
-    <van-nav-bar :title="title" left-arrow @click-left="$parent.prev()" />
-    <van-pull-refresh v-model="refreshing" class="release-recommned-content scroll-touch" @refresh="onRefresh">
+     <van-nav-bar left-arrow @click-left="$parent.prev()"  @click-right="onClickRight">
+        <template #title>
+          选择赛事
+        </template>
+        <template #right>
+          <img src="@/assets/expert/filter.png" width="18" height="18">
+        </template>
+      </van-nav-bar>
+    <div class="release-recommned-content scroll-touch">
+    <!-- <van-pull-refresh v-model="refreshing" class="release-recommned-content scroll-touch" @refresh="onRefresh">
       <van-list
         v-model="loading"
         :finished="finished"
         :error="loaderr"
-        finished-text="没有更多了"
         @load="onLoad"
-      >
-        <div v-for="item in resources" :key="item.matchId" class="list-item">
-          <div class="item-top" flex="box:mean cross:center">
+      > -->
+        <div>
+          <div v-for="(child,date) in resources" :key="date" class="release-match-group" :class="child.isActive?'current':''">
+            <div class="release-match-group-hd">
+              {{child.date}}&nbsp;&nbsp;周{{child.date | parseTime("{a}") }}&nbsp;&nbsp;共{{child.count}}场比赛&nbsp;&nbsp;已选{{child.actCount}}场
+              <img class="more" src="~@/assets/expert/arrow.png" @click="handShowMore(child)" />
+            </div>
+            <div class="release-match-group-bd">
+              <div class="release-match-group-item" v-for="(item,index) in child.child" :key="index">
+                <van-checkbox v-model="item.select" @click="handSelect(item,child)" class="check" checked-color="#00B48DFF"></van-checkbox>
+                <div class="release-match-group-item-row">
+                  <div class="left">
+                    <div style="flex:1">
+                      <span style="color:#FF9E20FF">{{ item.competitionName }}</span>&nbsp;&nbsp;{{ item.issueNum }}
+                    </div>{{ item.matchTime | parseTime("{m}-{d}") }}
+                  </div>
+                  <div class="center"></div>
+                  <div class="right">
+                    {{ item.matchTime | parseTime("{h}:{i}") }}  
+                  </div>
+                </div>
+                <div class="release-match-group-item-row">
+                  <div class="left">
+                    <span class="teamname">
+                      {{ item.homeTeamName }}   
+                    </span>
+                  </div>
+                  <div class="center">VS</div>
+                  <div class="right">
+                    <span class="teamname">
+                      {{ item.awayTeamName }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="item-top" flex="box:mean cross:center">
             <div class="item-left" flex="cross:center">
               <span class="tag">{{ item.competitionName }}</span>
               {{ item.matchTime | parseTime("{m}/{d} {h}:{i}") }}
@@ -38,21 +80,19 @@
               </van-col>
 
             </van-row>
-          </div>
+          </div> -->
         </div>
-      </van-list>
-    </van-pull-refresh>
+      <!-- </van-list> -->
+    <!-- </van-pull-refresh> -->
+    </div>
     <div class="release-recommned-footer" flex="box:last cross:center">
-      <span>已选 {{ count }} 场</span>
-
       <van-button class="liner-gradient" @click="handleSubmit">下一步</van-button>
     </div>
   </div>
 </template>
 
 <script>
-import usePullRefreshAndLoad from '@/mixins/usePullRefreshAndLoad'
-import { getCompetitonMatchList } from '@/api/expert'
+import { getExpertMatchList } from '@/api/expert'
 
 const MAX_MAPS = {
   '11': 2,
@@ -85,26 +125,140 @@ function _formatItems(arr) {
   })
 }
 
+const rulesEnu = [
+  {
+    'ruleName': '胜平负',
+    'ruleCode': '11',
+    'attrList': [
+      {
+        'attributeName': '胜',
+        'attributeCode': '1101'
+      },
+      {
+        'attributeName': '平',
+        'attributeCode': '1102'
+      },
+      {
+        'attributeName': '负',
+        'attributeCode': '1103'
+      }
+    ],
+    'kindsValue': '主+0'
+  },
+  {
+    'ruleName': '让球胜平负',
+    'ruleCode': '12',
+    'attrList': [
+      {
+        'attributeName': '胜',
+        'attributeCode': '1201'
+      },
+      {
+        'attributeName': '平',
+        'attributeCode': '1202'
+      },
+      {
+        'attributeName': '负',
+        'attributeCode': '1203'
+      }
+    ],
+    'kindsValue': '主+1'
+  }
+]
+
 export default {
-  mixins: [usePullRefreshAndLoad(getCompetitonMatchList)],
+  // mixins: [usePullRefreshAndLoad(getExpertMatchList)],
   data() {
     return {
       resources: [],
+      // params: {
+      //   currentPage: 0,
+      //   pageSize: 5
+      // },
       params: {
-        currentPage: 0,
-        pageSize: 5
-      }
+        // "competitionIds": [
+        //   1,
+        //   59
+        // ],
+        ids: [],
+        'matchType': 1//  1：全部； 2：竞彩 3：北单
+        // "pageSize": 5,
+        // "currentPage": 0,
+      },
+      articles: [],
+      count: 0
+      // {
+      //   "ids": [],
+      //   "matchType": 1,
+      //   "x-tenant-code': '",
+      //   "LANG': '"
+      // }
     }
   },
   computed: {
     title() {
-      return this.$parent.params.match.type === 2 ? '足球' : ' '
-    },
-    count() {
-      return this.resources.filter(o => o.active).length
+      return this.$parent.params?.match?.type === 2 ? '足球' : ' '
     }
+    // count() {
+    //   // return this.resources.filter(o => o.active).length
+    // }
+  },
+  created() {
+    let filterParams = sessionStorage.getItem('Match-Release-Filter-Params')
+    if (filterParams) {
+      this.params = Object.assign(this.params, JSON.parse(filterParams))
+    }
+    getExpertMatchList(this.params).then(
+      ([data, error]) => {
+        if (!error) {
+          // this.resources = data
+          console.log(this.formartData(data))
+          this.resources = this.formartData(data)
+        }
+      }
+    )
   },
   methods: {
+    longpress(attrs) {
+      let that = this
+      attrs.list.forEach(function(item) {
+        that.$set(item, 'select', false)
+      })
+      that.$set(attrs.item, 'select', true)
+    },
+    formartData(data) {
+      let arr = []
+      for (let item in data) {
+        arr.push({
+          date: item,
+          child: data[item],
+          isActive: false,
+          actCount: 0,
+          count: data[item].length
+        })
+      }
+      return arr
+    },
+    handShowMore(val) {
+      val.isActive = !val.isActive
+    },
+    handSelect(item, child) {
+      if (item.select) {
+        if (this.articles.length >= 3) {
+          item.select = false
+          return this.$toast('最多可选3场比赛!')
+        }
+        child.actCount++
+        this.count++
+        this.articles.push(item)
+      } else {
+        child.actCount--
+        this.count--
+        this.articles = this.articles.filter(function(art) {
+          if (art.stageId !== item.stageId) return art
+        })
+      }
+    },
     implementationGetParams() {
       return { ...this.$parent.params.match, ...this.params }
     },
@@ -170,6 +324,60 @@ export default {
       if (this.count === 0) {
         return this.$toast('至少选择一场赛事!')
       } else {
+        this.articles.map(function(item) {
+          item.rules = rulesEnu
+        })
+        let rulesEnuArr = rulesEnu.map(function(o) {
+          let { attrList, ...others } = o
+          o = attrList.map(item => ({
+            ...item,
+            ...others
+          }))
+          return o
+        })
+
+        this.articles.forEach(item => {
+          // item.spf = '2.300,3.250,2.700'
+          let spfArr1 = item.spf?.split(',') || []
+          item.spfArr = rulesEnuArr[0]
+          item.spfArr = item.spfArr.map((o, i) => ({
+            ...o,
+            label: this.formatLabel(o),
+            select: false,
+            isHost: false,
+            num: spfArr1[i]
+          }))
+          let rqArr = item.rq?.split(',') || []
+          let [rqNum, ...rqArrOther] = rqArr
+          item.rqNum = rqNum
+          item.rqArr = rulesEnuArr[1]
+          item.rqArr = item.rqArr.map((o, i) => ({
+            ...o,
+            label: this.formatLabel(o),
+            select: false,
+            isHost: false,
+            kindsValue: '主' + item.rqNum,
+            num: rqArrOther[i]
+          }))
+        })
+        this.$parent._handleSetArticle(this.articles)
+        this.$parent.next()
+      }
+    },
+    formatLabel(o) {
+      switch (o.attributeName) {
+        case '负':
+          return '客胜'
+        case '胜':
+          return '主胜'
+        default :
+          return o.attributeName
+      }
+    },
+    handleSubmit1() {
+      if (this.count === 0) {
+        return this.$toast('至少选择一场赛事!')
+      } else {
         let articles = []
         this.resources.forEach(item => {
           item.rules.forEach(rule => {
@@ -180,7 +388,7 @@ export default {
               }))
               if (attrList.length) {
                 articles.push({
-                  ruleType: this.$parent.params.match.ballType,
+                  ruleType: this.$parent.params.ballType,
                   competitionId: item.competitionId,
                   competitionName: item.competitionName,
                   matchId: item.matchId,
@@ -189,7 +397,7 @@ export default {
                   awayTeamName: item.awayTeamName,
                   ruleId: rule.ruleCode,
                   ruleName: rule.ruleName,
-                  matchType: this.$parent.params.match.type,
+                  matchType: this.$parent.params.type,
                   kindsValue: rule.kindsValue,
                   attributeType: this.format(attrList, 'attributeType'),
                   ruleAttributeName: this.format(attrList, 'ruleAttributeName'),
@@ -199,7 +407,7 @@ export default {
             }
           })
         })
-        this.$parent._handleSetArticle(articles)
+        this.$parent._handleSetArticle(this.articles)
         this.$parent.next()
       }
     },
@@ -217,15 +425,88 @@ export default {
         return i
       })
       return str
+    },
+    onClickRight() {
+      this.$router.push({ name: 'ExpertReleaseFiter' })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.release-match-group {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  &-hd {
+    color: #007C61FF;
+    line-height: 25px;
+    background: #8ADAC9;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .more {
+      width: 11px;
+      height: 6px;
+      // transform: rotate(-90deg);
+      position: absolute;
+      right: 10px;
+    }
+  }
+  &-item {
+    background: #FFFFFFFF;
+    border-radius: 5px;
+    margin-top: 8px;
+    padding: 4px 12px;
+    color: #333333FF;
+    position: relative;
+    .check{
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -8px;
+    }
+    &-row{
+      display: flex;
+      padding: 4px 0;
+      .left {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        .teamname {
+          text-align: right;
+        }
+      }
+      .center {
+        width: 32px;
+        font-size: 15px;
+        color: #CCCCCCFF;
+        text-align: center;
+        font-weight: bold;
+      }
+      .right {
+        flex: 1;
+      }
+      .teamname {
+        width: 110px;
+        font-weight: bold;
+      }
+    }
+  }
+  &.current {
+    .more {
+      transform: rotate(-90deg);
+    }
+    .release-match-group-bd {
+      display: none;
+    }
+  }
+}
 .release-recommned {
   .release-recommned-content {
-    padding: 10px;
+    height: calc(100vh - 94px);
+    padding: 8px 10px;
     .list-item {
       margin-bottom: 10px;
       background: #fff;
@@ -291,15 +572,14 @@ export default {
     }
   }
   .release-recommned-footer {
-    border-top: 1px solid #ebebeb;
-    background: #fff;
+    background: #f6f6f6;
     font-size: 14px;
-    padding: 7px 15px;
-    color: #333;
+    padding: 0 14px;
     button {
-      width: 90px;
-      height: 35px;
+      width: 100%;
+      height: 46px;
       font-size: 16px;
+      border-radius: 22px;
       &.next {
         background: #00c8b0;
       }

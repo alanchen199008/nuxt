@@ -11,9 +11,10 @@
     <van-row>
       <van-col span="12">
         <div
-          v-for="item in homeBench"
+          v-for="(item, index) in homeBench"
           :key="item.id"
-          class="banch-list-item van-hairline--bottom"
+          class="banch-list-item"
+          :class="{ 'van-hairline--bottom': index != homeBench.length - 1 }"
         >
           <div class="banch-list-item__avatar banch-list-item__avatar--home" :data-number="item.shirtNumber">
             <van-image :src="item.logo" round lazy-load />
@@ -26,9 +27,10 @@
       </van-col>
       <van-col span="12">
         <div
-          v-for="item in awayBench"
+          v-for="(item, index) in awayBench"
           :key="item.id"
-          class="banch-list-item van-hairline--left van-hairline--bottom"
+          class="banch-list-item van-hairline--left"
+          :class="{ 'van-hairline--bottom': index != awayBench.length - 1 }"
         >
           <div class="banch-list-item__avatar banch-list-item__avatar--away" :data-number="item.shirtNumber">
             <van-image :src="item.logo" round lazy-load />
@@ -75,10 +77,10 @@ export default {
     }
   }
   &-item {
-    padding: 6px 15px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
-    color: $--color-text-secondary;
+    color: $--color-text-defalt;
     // border-bottom: 1px solid #EDEDED;
     margin: -1px 0;
     &__avatar {
@@ -120,7 +122,7 @@ export default {
       margin-left: 15px;
       flex: 1;
       .name {
-        color: $--color-text-primary;
+        color: $--color-text-defalt;
         font-size: 13px;
       }
     }

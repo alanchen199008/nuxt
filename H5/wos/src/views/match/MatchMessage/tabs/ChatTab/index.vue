@@ -44,7 +44,8 @@
 import { mapGetters } from 'vuex'
 import { getChatRoomAccess } from '@/api/user'
 import { getNewsInfo } from '@/api/home'
-import UseWebSocket from '@/mixins/useWebSocket'
+// import UseWebSocket from '@/mixins/useWebSocket'
+import UseWebSocket from '@/mixins/socket'
 import { setLocalStorage, getLocalStorage } from '@/utils/auth'
 export default {
   name: 'ChatTab',
@@ -88,6 +89,7 @@ export default {
     this.getNotice()
   },
   beforeDestroy() {
+    console.log(this)
     this.observer?.disconnect()
     this.checkTimeoutId && clearInterval(this.checkTimeoutId)
   },

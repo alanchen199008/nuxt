@@ -37,12 +37,12 @@ export default {
 .wos-card {
   position: relative;
   background-color: #fff;
-  margin: 20px 0 0;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
+  margin: 10px 0 0;
+  // box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.08);
   &__head {
-    padding: 8px 10px;
-    color: #333;
-    font-size: 14px;
+    padding: 15px 10px 10px;
+    color: #333333FF;
+    font-size: 15px;
     font-weight: 600;
     border-bottom: 1px solid #EBEBEB;
     &::before {
@@ -51,14 +51,15 @@ export default {
       content: "";
       margin-top: -4px;
       display: inline-block;
-      margin-right: 8px;
+      margin-right: 4px;
       vertical-align: middle;
+      border-radius: 3px;
       background: #F87D22;
     }
   }
   &__body {
     font-size: 13px;
-    padding: 15px 15px;
+    padding: 6px 15px 12px;
     p { margin-bottom: 15px;}
   }
 }

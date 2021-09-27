@@ -71,7 +71,7 @@
                 <th width="60">总进球</th>
               </tr>
               <tr v-for="(item, index) in shooterTops" :key="index">
-                <td><span class="position" :class=" index<=2 ? 'primary':'default'">{{ team.position }}</span></td>
+                <td><span class="position" :class=" index<=2 ? 'primary':'default'">{{ item.position }}</span></td>
                 <td>{{ item.player }}</td>
                 <td>{{ item.teamName }}</td>
                 <td>{{ item.goalNumber }}</td>
@@ -121,6 +121,7 @@ import { mapGetters } from 'vuex'
 import {
   getEuroCCAllInstant,
   getEuroCCInstant,
+  getEuroCCInstantFive,
   getGroupTops,
   getShooterTops,
   getNewsList,
@@ -200,40 +201,44 @@ export default {
           this.buttons = data
         }
       })
-      getEuroCCInstant({ stageId: 100 })
+      getEuroCCInstantFive({ stageId: 100 })
         .then(([data, error]) => {
           if (!error) {
-            this.items = data.slice(0, 3)
+            this.items = data
           }
         })
-      getGroupTops({ stageId: 46440 }).then(([data, error]) => {
-        if (!error) {
-          let title = Object.keys(data)
-          let array = Object.values(data)
-          let obj = {}
-          title.map((item, index) => {
-            array.map((team, i) => {
-              if (index === i) {
-                obj = {
-                  title: this.getGroupName(Number(item)) + '组',
-                  items: team,
-                  key: i
-                }
-                // this.groupTops.push(obj)
-              }
-              return team
-            })
-            return item
-          })
-          // this.groupTops = this.groupTops.slice(0, 2)
-        }
-      })
-      getShooterTops().then(([data, error]) => {
-        if (!error) {
-          // this.shooterTops = data.splice(0, 5)
-        }
-      })
-      getNewsList({ typeId: '6064431027ee2b6a615c66cf', pageSize: 100, currentPage: 1 })
+      // getGroupTops({ stageId: 46440 }).then(([data, error]) => {
+      //   if (!error) {
+      //     let title = Object.keys(data)
+      //     let array = Object.values(data)
+      //     let obj = {}
+      //     title.map((item, index) => {
+      //       array.map((team, i) => {
+      //         if (index === i) {
+      //           obj = {
+      //             title: this.getGroupName(Number(item)) + '组',
+      //             items: team,
+      //             key: i
+      //           }
+      //           this.groupTops.push(obj)
+      //         }
+      //         return team
+      //       })
+      //       return item
+      //     })
+      //     this.groupTops = this.groupTops.slice(0, 2)
+      //   }
+      // })
+      // getShooterTops().then(([data, error]) => {
+      //   if (!error) {
+      //     this.shooterTops = data.splice(0, 5)
+      //   }
+      // })
+      let newsId = '6064431027ee2b6a615c66cf'
+      if( process.env.NODE_ENV !== 'production'){
+        newsId = '60e819257a76e45b77759719'
+      }
+      getNewsList({ typeId: newsId, pageSize: 100, currentPage: 1 })
         .then(
           ([data, error]) => {
             if (!error) {
@@ -255,14 +260,10 @@ export default {
       if (button.stageId === 1) {
         return this.$toast('资格赛进行中')
       }
-      getEuroCCInstant({ stageId: button.stageId }).then(([data, error]) => {
+      getEuroCCInstantFive({ stageId: button.stageId }).then(([data, error]) => {
         if (!error) {
           this.active = index
-          this.items = data.map(item => {
-            this.$set(item, 'stageName', button.name + item.stageName)
-            return item
-          })
-          this.items = this.items.slice(0, 3)
+          this.items = data
         }
       })
     },

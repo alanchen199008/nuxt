@@ -196,6 +196,42 @@ export function parseDate(time) {
   }
 }
 
+export function parseDateFormatRecommend(time, cFormat) {
+  if (('' + time).length === 10) {
+    time = parseInt(time) * 1000
+  } else {
+    time = +time
+  }
+  const d = new Date(time)
+  const now = Date.now()
+  const diff = (now - d) / 1000
+  if (diff < 3600 * 24) {
+    return Math.ceil(diff / 3600) + '小时前'
+  } else {
+    return parseTime(time, cFormat)
+  }
+}
+
+export function parseDateFormatNews(time) {
+  if (('' + time).length === 10) {
+    time = parseInt(time) * 1000
+  } else {
+    time = +time
+  }
+  const d = new Date(time)
+  const now = Date.now()
+  const diff = (now - d) / 1000
+  if (diff < 3600) {
+    return Math.ceil(diff / 60) + '分钟前'
+  } else if (diff < 3600 * 24) {
+    return Math.ceil(diff / 3600) + '小时前'
+  } else if (d.getFullYear() === new Date().getFullYear()) {
+    return parseTime(time, '{m}-{d} {h}:{i}')
+  } else {
+    return parseTime(time, '{y}-{m}-{d} {h}:{i}')
+  }
+}
+
 export function exportFormData(data) {
   const params = new FormData()
   for (const key in data) {

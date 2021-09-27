@@ -1,5 +1,8 @@
 <template>
   <div class="starting">
+    <van-action-sheet v-model="showLayer" title="标题">
+      <div class="content" style="height:80vh;">内容</div>
+    </van-action-sheet>
     <div class="starting-head">
       <slot name="home" />
     </div>
@@ -11,6 +14,7 @@
         class="starting-item"
         :style="{ top: item.y + '%', left: item.x + '%' }"
         flex="dir:top cross:center"
+        @click="showPlayer(item)"
       >
         <div class="starting-item-avatar">
           <div class="starting-item-avatar__shield" :class="`starting-item-avatar__shield--home`">
@@ -30,6 +34,7 @@
         class="starting-item"
         :style="{ top: (100 - item.y) + '%', left: item.x + '%' }"
         flex="dir:top cross:center"
+        @click="showPlayer(item)"
       >
         <div class="starting-item-avatar">
           <div class="starting-item-avatar__shield" :class="`starting-item-avatar__shield--away`">
@@ -65,6 +70,17 @@ export default {
     awayFormation: {
       type: String,
       default: ''
+    }
+  },
+  data() {
+    return {
+      showLayer: false
+    }
+  },
+  methods: {
+    showPlayer(item) {
+      console.log(item)
+      // this.showLayer = true
     }
   }
 }

@@ -9,7 +9,6 @@
     >
       <template #right>
         <font
-          color="#FFFFFF"
           font-size="12px"
           style="text-decoration: underline; margin-right:8px;"
           @click="toService"
@@ -18,8 +17,43 @@
     </van-nav-bar>
     <div class="content">
       <div class="recommend-detail">
+        <div class="recommend-detail-buy-cut-time">
+          <span class="follow">关注该方案所有比赛</span>
+          <span v-if="sell.restTime">
+            方案售卖倒计时
+            <!-- <span class="time">05:22:31</span> -->
+            <van-count-down
+              :time="sell.restTime"
+              :style="{ color: '#F88803FF', fontSize: '12px',display: 'inline-block' }"
+              @finish="finish"
+            />
+          </span>
+          <span v-else>方案售卖已结束</span>
+        </div>
+        <div class="recommend-detail-title">
+          <span class="tag">[{{ model.articleSchedules === 1 ? "单场" : matchListLen + "串1" }}]</span> {{ model.title }}
+        </div>
+        <div class="recommend-detail-date">
+          {{ model.creatTime | parseDateFormatRecommend("{y}年{m}月{d}日") }}发布
+          <span class="num">
+            <template v-if="sell.buynum === 0">
+              <van-icon name="eye" />
+              <font> {{
+                sell.viewNum >= 10000 ? "9999+" : sell.viewNum
+              }}</font>
+            </template>
+            <template v-else>
+              <font color="#FF0000">已售</font>
+              <font> {{
+                sell.buynum >= 10000 ? "9999+" : sell.buynum
+              }}</font>
+            </template>
+            <!-- <i class="van-icon van-icon-eye"></i>
+            14 -->
+          </span>
+        </div>
         <recommend-expert-panel :data="expert" />
-        <recommend-expert-sell :data="sell" @finish="finish" />
+        <!-- <recommend-expert-sell :data="sell" @finish="finish" /> -->
         <recommend-match-list :data="matchs" />
         <recommend-description :data="description" />
       </div>
@@ -39,13 +73,16 @@
     <div v-if="!buy && !expired && !free && !end && !self" class="footer">
       <div class="buyer" flex="cross:center box:last ">
         <div class="buyer-content">
-          需支付
-          <font color="#FF0000">
+          <!-- 需支付 -->
+          <font color="#a7a7a7" style="font-size:11px">
             <template v-if="sell.free">免费</template>
-            <template v-else>{{ sell.goldnum }}球币</template>
+            <template v-else>
+              <span style="color:#FF8330FF;font-size:20px;">{{ sell.goldnum }}</span>
+              球币
+            </template>
           </font>
         </div>
-        <button class="buyer-button" @click="handleConfirm">立即支付</button>
+        <button class="buyer-button" @click="handleConfirm">立即购买</button>
       </div>
     </div>
     <van-dialog
@@ -75,10 +112,11 @@
 </template>
 <script>
 import { doCancelRecommend } from '@/api/account'
+import { parseDate } from '@/utils'
 import { getExpertArticleDetail, buyArticle } from '@/api/expert'
 import {
   RecommendExpertPanel,
-  RecommendExpertSell,
+  // RecommendExpertSell,
   RecommendMatchList,
   RecommendDescription
 } from './components'
@@ -86,12 +124,13 @@ import { mapGetters } from 'vuex'
 export default {
   components: {
     RecommendExpertPanel,
-    RecommendExpertSell,
+    // RecommendExpertSell,
     RecommendMatchList,
     RecommendDescription
   },
   data() {
     return {
+      model: {},
       from: '',
       articleId: null,
       self: false,
@@ -154,7 +193,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['info', 'memberId'])
+    ...mapGetters(['info', 'memberId']),
+    matchListLen() {
+      return this.model?.matchList?.length
+    }
   },
   watch: {
     expired(value) {
@@ -221,6 +263,7 @@ export default {
             this.description.content = data.content.length > 0 ? data.content.replace(/\n/g, '<br>') : data.content
             this.description.goldnum = data.goldnum
             this.description.buyFlag = data.buyFlag
+            this.description.time = data.restTime * 1000
             this.sell.goldnum = data.goldnum
             this.sell.buynum = data.buynum
             this.sell.ruleType = data.ruleType
@@ -231,6 +274,7 @@ export default {
             this.sell.matchList = data.matchList
             this.sell.viewNum = data.viewNum
             this.matchs.matchList = data.matchList
+            this.model = data
           }
         })
     },
@@ -305,25 +349,80 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page {
-  background: linear-gradient(45deg, #00d1cb 0%, #00a0e3 100%) no-repeat
-    $--background-color-base;
-    background-size: 100% 97px;
-  ::v-deep .van-nav-bar {
-    .van-nav-bar__title {
-      color: #fff;
-    }
+.recommend-detail-buy-cut-time {
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #BDBDBDFF;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  .time {
+    color: #F88803FF;
+  }
+}
+.follow {
+  font-size: 12px;
+  color: #F88803FF;
+  &::before {
+    content: "";
+    width: 16px;
+    height: 14px;
+    background: url('~@/assets/public/follow.png') no-repeat;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  &.act::before {
+    background: url('~@/assets/public/followed.png') no-repeat;
+  }
+}
+.recommend-detail-title {
+  padding: 0px 14px;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333333FF;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  .tag {
+    color: #7878FFFF;
+  }
+}
+.recommend-detail-date {
+  color: #BDBDBDFF;
+  justify-content: space-between;
+  display: flex;
+  padding: 8px 14px;
+  margin-top: 2px;
+  .num {
+    color: #F88803FF;
     .van-icon {
-      color: #fff;
+      color: #BDBDBDFF;
     }
   }
-
+}
+.page {
+  // background: linear-gradient(45deg, #00d1cb 0%, #00a0e3 100%) no-repeat
+  //   $--background-color-base;
+  //   background-size: 100% 97px;
+  ::v-deep .van-nav-bar {
+    // .van-nav-bar__title {
+    //   color: #fff;
+    // }
+    .van-icon {
+      color: #333333FF!important;
+    }
+  }
+  font-size: 12px;
   .content {
     overflow: hidden;
     height: calc(100vh - 44px);
     .recommend-detail {
       width: 100%;
-      font-size: 14px;
+      font-size: 12px;
       position: relative;
       z-index: 1;
       overflow-x: hidden;
@@ -339,8 +438,9 @@ export default {
     }
   }
   .footer {
-    background: #fff;
-    border-top: 1px solid #dedede;
+    // background: #fff;
+    background: linear-gradient(180deg, transparent 0, transparent 7px, #fff 7px, #fff 100%);
+    // border-top: 1px solid #dedede;
     .cancel{
       font-size: 14px;
       span{
@@ -370,32 +470,37 @@ export default {
       }
     }
     .buyer {
-      font-size: 14px;
-      padding:10px;
-      .buyer-content {
-        border-top: 1px solid #ddd;
-        border-left: 1px solid #ddd;
-        border-bottom: 1px solid #ddd;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-        height: 36px;
-        line-height: 36px;
-        padding: 0 16px;
-        color: #000;
-
-      }
+      font-size: 16px;
+      padding:16px 20px 0 37px;
+      height: 76px;
+      background: url("~@/assets/expert/buybg.png") no-repeat;
+      background-size: cover;
+      color: #fff;
+      align-items: baseline;
+      // .buyer-content {
+      //   border-top: 1px solid #ddd;
+      //   border-left: 1px solid #ddd;
+      //   border-bottom: 1px solid #ddd;
+      //   border-top-left-radius: 4px;
+      //   border-bottom-left-radius: 4px;
+      //   height: 36px;
+      //   line-height: 36px;
+      //   padding: 0 16px;
+      //   color: #000;
+      // }
       button {
         line-height: 36px;
-        padding: 0 16px;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-        background: #da3427;
-        color: #fff;
-        border-color: #da3427;
-        &[disabled="disabled"] {
-          background: #eeeeee;
-          color: #999;
-        }
+        padding: 0 10px;
+        // border-top-right-radius: 4px;
+        // border-bottom-right-radius: 4px;
+        // background: #da3427;
+        // color: #fff;
+        // border-color: #da3427;
+        background: transparent;
+        // &[disabled="disabled"] {
+        //   background: #eeeeee;
+        //   color: #999;
+        // }
       }
     }
   }

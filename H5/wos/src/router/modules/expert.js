@@ -13,12 +13,17 @@ export default [
         name: 'ExpertDetail',
         component: () => import('views/expert/Detail/expert'),
         children: [
-          {
-            path: ':pid',
-            name: 'ExpertRecommendDetail',
-            component: () => import('views/expert/Detail/recommend')
-          }
+          // {
+          //   path: ':pid',
+          //   name: 'ExpertRecommendDetail',
+          //   component: () => import('views/expert/Detail/recommend')
+          // }
         ]
+      },
+      {
+        path: 'recommend/:id',
+        name: 'ExpertRecommendDetail',
+        component: () => import('views/expert/Detail/recommend')
       },
       {
         path: ':id',
@@ -36,12 +41,17 @@ export default [
         path: 'filter',
         name: 'RecommendFiter',
         component: () => import('views/expert/Recommend/Filter')
-      },
-      {
-        path: 'release/:step/:from',
-        name: 'ExpertRelease',
-        component: () => import('views/expert/Release')
       }
     ]
+  },
+  {
+    path: 'expertRelease/:step/:from',
+    name: 'ExpertRelease',
+    component: () => import('views/expert/Release')
+  },
+  {
+    path: 'release/filter',
+    name: 'ExpertReleaseFiter',
+    component: () => import('views/expert/Release/Filter')
   }
 ]

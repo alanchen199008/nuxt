@@ -37,17 +37,7 @@ export default {
     } else {
       tab = this.$route.query.tab
     }
-    if (tab) {
-      if (tab === 'Instant') {
-        this.component = 0
-      }
-      if (tab === 'Top') {
-        this.component = 1
-      }
-      if (tab === 'Shooter') {
-        this.component = 2
-      }
-    }
+    this.component = tab
   },
   methods: {
     onClickLeft() {

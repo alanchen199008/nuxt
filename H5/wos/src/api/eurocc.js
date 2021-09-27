@@ -8,9 +8,17 @@ export const getEuroCCAllInstant = params => {
   })
 }
 
-export const getEuroCCInstant = params => {
+export const getEuroCCInstantFive = params => {
   return request({
     url: 'WOS-DATA-CENTER/noauth/europe/champion/stage/match',
+    method: 'get',
+    params
+  })
+}
+
+export const getEuroCCInstant = params => {
+  return request({
+    url: 'WOS-DATA-CENTER/noauth/europe/champion/all/match',
     method: 'get',
     params
   })

@@ -1,22 +1,148 @@
 <template>
   <div class="release-recommned">
     <div class="release-recommned-header">
-      <van-nav-bar left-arrow @click-left="$parent.prev()">
+      <van-nav-bar left-arrow @click-left="$parent.prev()"  @click-right="onClickRight">
         <template #title>
-          <div class="tab" flex="box:mean">
-            <div
-              v-for="(item, index) in types"
-              :key="index"
-              :class="params.type == item.value ? 'active' : ''"
-              @click="typeChange(item)"
-            >
-              {{ item.label }}
-            </div>
-          </div>
+          选择赛事
+        </template>
+        <template #right>
+          <img src="@/assets/expert/filter.png" width="18" height="18">
         </template>
       </van-nav-bar>
     </div>
+    <filter></filter>
     <div class="release-recommned-content">
+      <div class="release-match-group">
+        <div class="release-match-group-hd">
+          2021-07-28&nbsp;&nbsp;周一&nbsp;&nbsp;共2场比赛&nbsp;&nbsp;已选1场
+          <img class="more" src="~@/assets/expert/arrow.png" />
+        </div>
+        <div class="release-match-group-bd">
+          <div class="release-match-group-item">
+            <van-checkbox class="check" checked-color="#00B48DFF"></van-checkbox>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <div style="flex:1">
+                  <span style="color:#FF9E20FF">爱尔高联</span>&nbsp;&nbsp;3023
+                </div>07-28
+              </div>
+              <div class="center"></div>
+              <div class="right">
+                15:00   
+              </div>
+            </div>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <span class="teamname">
+                  智利女足   
+                </span>
+              </div>
+              <div class="center">VS</div>
+              <div class="right">
+                <span class="teamname">
+                  日本女足   
+                </span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="release-match-group-item">
+            <van-checkbox class="check" checked-color="#00B48DFF"></van-checkbox>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <div style="flex:1">
+                  <span style="color:#FF9E20FF">爱尔高联</span>&nbsp;&nbsp;3023
+                </div>
+                07-28 
+              </div>
+              <div class="center"></div>
+              <div class="right">
+                15:00   
+              </div>
+            </div>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <span class="teamname">
+                  智利女足   
+                </span>
+              </div>
+              <div class="center">VS</div>
+              <div class="right">
+                <span class="teamname">
+                  日本女足   
+                </span>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="release-match-group current">
+        <div class="release-match-group-hd">
+          2021-07-28&nbsp;&nbsp;周一&nbsp;&nbsp;共2场比赛&nbsp;&nbsp;已选1场
+          <img class="more" src="~@/assets/expert/arrow.png" />
+        </div>
+        <div class="release-match-group-bd">
+          <div class="release-match-group-item">
+            <van-checkbox class="check" checked-color="#00B48DFF"></van-checkbox>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <div style="flex:1">
+                  <span style="color:#FF9E20FF">爱尔高联</span>&nbsp;&nbsp;3023
+                </div>
+                07-28 
+              </div>
+              <div class="center"></div>
+              <div class="right">
+                15:00   
+              </div>
+            </div>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <span class="teamname">
+                  智利女足   
+                </span>
+              </div>
+              <div class="center">VS</div>
+              <div class="right">
+                <span class="teamname">
+                  日本女足   
+                </span>
+                
+              </div>
+            </div>
+          </div>
+          <div class="release-match-group-item">
+            <van-checkbox class="check" checked-color="#00B48DFF"></van-checkbox>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <div style="flex:1">
+                  <span style="color:#FF9E20FF">爱尔高联</span>&nbsp;&nbsp;3023
+                </div>
+                07-28 
+              </div>
+              <div class="center"></div>
+              <div class="right">
+                15:00   
+              </div>
+            </div>
+            <div class="release-match-group-item-row">
+              <div class="left">
+                <span class="teamname">
+                  智利女足   
+                </span>
+              </div>
+              <div class="center">VS</div>
+              <div class="right">
+                <span class="teamname">
+                  日本女足   
+                </span>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="release-recommned-main">
         <van-row>
           <van-col
@@ -36,13 +162,13 @@
       </div>
     </div>
     <div class="release-recommned-footer" flex="box:last">
-      <div class="filter-button">
+      <!-- <div class="filter-button">
         <button @click="handleSelect">全选</button>
         <button @click="toggleSelect">反选</button>
-      </div>
-      <van-button class="liner-gradient" @click="handleConfirm">{{
-        $t("confirm")
-      }}</van-button>
+      </div> -->
+      <van-button class="liner-gradient" @click="handleConfirm">
+        下一步
+      </van-button>
     </div>
   </div>
 </template>
@@ -58,8 +184,19 @@ export default {
         type: 2,
         competitionIds: []
       },
+      // params: {
+      //   "level": 3,
+      //   "ballType": 1,
+      //   // "tenantCode": "",
+      //   "type": 1,
+      //   "condition": true
+      // },
       query: {
-        type: 2
+        "level": 3,
+        "ballType": 1,
+        // "tenantCode": "",
+        "type": 2,
+        "condition": true
       },
       rules: [],
       radio: null,
@@ -151,14 +288,18 @@ export default {
       }
       this.$parent._handleSetMatch(this.params)
       this.$parent.next()
+    },
+    onClickRight() {
+      this.$router.push({ name: 'ExpertReleaseFiter'})
     }
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .release-recommned {
-  background: #fff;
+  background: #f6f6f6;
   .release-recommned-header {
     background: #fff;
     .tab {
@@ -186,10 +327,11 @@ export default {
     }
   }
   .release-recommned-content {
-    height: calc(100vh - 104px);
+    height: calc(100vh - 114px);
     overflow: hidden;
+    background: #f6f6f6;
     .release-recommned-main {
-      height: calc(100% - 54px);
+      height: calc(100% - 70px);
       overflow-x: hidden;
       overflow-y: auto;
       .van-row {
@@ -213,10 +355,10 @@ export default {
     }
   }
   .release-recommned-footer {
-    border-top: 1px solid #ebebeb;
-    background: #fff;
+    // border-top: 1px solid #ebebeb;
+    background: #f6f6f6;
     font-size: 14px;
-    padding: 12px 10px;
+    padding: 12px 14px;
     .filter-button {
       button {
         width: 58px;
@@ -238,9 +380,80 @@ export default {
       }
     }
     button.liner-gradient {
-      width: 90px;
-      height: 35px;
-      font-size: 17px;
+      width: 100%;
+      height: 46px;
+      font-size: 16px;
+      border-radius: 22px;
+    }
+  }
+}
+.release-match-group {
+  margin: 8px 10px 0;
+  font-size: 12px;
+  &-hd {
+    color: #007C61FF;
+    line-height: 25px;
+    background: #8ADAC9;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .more {
+      width: 11px;
+      height: 6px;
+      // transform: rotate(-90deg);
+      position: absolute;
+      right: 10px;
+    }
+  }
+  &-item {
+    background: #FFFFFFFF;
+    border-radius: 5px;
+    margin-top: 8px;
+    padding: 4px 12px;
+    color: #333333FF;
+    position: relative;
+    .check{
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -8px;
+    }
+    &-row{
+      display: flex;
+      padding: 4px 0;
+      .left {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        .teamname {
+          text-align: right;
+        }
+      }
+      .center {
+        width: 32px;
+        font-size: 15px;
+        color: #CCCCCCFF;
+        text-align: center;
+        font-weight: bold;
+      }
+      .right {
+        flex: 1;
+      }
+      .teamname {
+        width: 110px;
+        font-weight: bold;
+      }
+    }
+    
+  }
+  &.current {
+    .more {
+      transform: rotate(-90deg);
+    }
+    .release-match-group-bd {
+      display: none;
     }
   }
 }

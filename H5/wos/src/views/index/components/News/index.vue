@@ -31,6 +31,63 @@
         finished-text="没有更多了"
         @load="onLoad"
       >
+        <div class="news-item">
+          <div class="news-item-cell">
+            <div class="news-item-left">
+              <div class="title">
+                周四竞彩大势：奥运女足季军 战奥运女足季军战欧联凯尔特 人能凯尔特人能否反客为主？
+                周四竞彩大势：奥运女足季军 战奥运女足季军战欧联
+              </div>
+              <div class="des">
+                <span class="hot-tag">欧洲杯</span>
+                <span>23分钟前</span>
+              </div>
+              <div class="des">
+                <span>23分钟前</span>
+                <div>
+                  <span class="ico-img ico-view">1000+</span>
+                  <span class="ico-img ico-message">123</span>
+                </div>
+              </div>
+            </div>
+            <img class="r-img" src="https://uat-strin.wosprdapp.net/image/news/5f2c7ded-824c-430f-9f02-51570919e5bb.png">
+          </div>
+          <div class="message-hot">
+            <div class="ell2">
+              <svg-icon icon-class="divine-evaluation" size="mini" />
+              <span class="nickname">世界波足球体育：</span>奥运女奥运女足季军战欧联凯战欧 联凯尔特人战欧联凯尔特人能欧联凯尔特人能否反客为...
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-item-cell">
+            <div class="news-item-left">
+              <div class="title">
+                周四竞彩大势：奥运女足季军 战奥运女足季军战欧联凯尔特 人能凯尔特人能否反客为主？
+                周四竞彩大势：奥运女足季军 战奥运女足季军战欧联
+              </div>
+              <div class="pic">
+                <img src="https://uat-strin.wosprdapp.net/image/news/5f2c7ded-824c-430f-9f02-51570919e5bb.png">
+                <img src="https://uat-strin.wosprdapp.net/image/news/5f2c7ded-824c-430f-9f02-51570919e5bb.png">
+                <img src="https://uat-strin.wosprdapp.net/image/news/5f2c7ded-824c-430f-9f02-51570919e5bb.png">
+              </div>
+              <div class="des">
+                <span>23分钟前</span>
+                <div>
+                  <span class="ico-img ico-view">1000+</span>
+                  <span class="ico-img ico-message">123</span>
+                </div>
+              </div>
+            </div>
+            <img class="r-img" src="https://uat-strin.wosprdapp.net/image/news/5f2c7ded-824c-430f-9f02-51570919e5bb.png">
+          </div>
+          <div class="message-hot">
+            <div class="ell2">
+              <svg-icon icon-class="divine-evaluation" size="mini" />
+              <span class="nickname">世界波足球体育：</span>奥运女奥运女足季军战欧联凯战欧 联凯尔特人战欧联凯尔特人能欧联凯尔特人能否反客为...
+            </div>
+          </div>
+        </div>
         <van-cell
           v-for="(item, index) in items"
           :key="index"
@@ -52,7 +109,7 @@
               </template>
               <div class="info" flex="cross:center box:mean">
                 <span>{{
-                  item.createTime | parseTime("{y}-{m}-{d} {h}:{i}")
+                  item.createTime | parseDateFormatNews
                 }}</span><span
                   class="view-num"
                 ><svg-icon icon-class="eye-open" size="mini" />
@@ -78,7 +135,9 @@
 import baseData from '@/mixins/baseData'
 import { getNewsList } from '@/api/news'
 import usePullRefreshAndLoad from '@/mixins/usePullRefreshAndLoad'
+import SvgIcon from '../../../../components/SvgIcon.vue'
 export default {
+  components: { SvgIcon },
   name: 'News',
   mixins: [baseData, usePullRefreshAndLoad(getNewsList)],
   data() {
@@ -143,6 +202,128 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.hot-tag {
+  background: #F5F6F8FF;
+  border-radius: 10px;
+}
+.ico-view {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 10px;
+    background: url("~@/assets/news/eye.png") no-repeat;
+    background-size: cover;
+    margin-right: 2px;
+  }
+}
+.ico-message {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 11px;
+    background: url("~@/assets/news/message.png") no-repeat;
+    background-size: cover;
+    margin-right: 2px;
+  }
+}
+.news-item {
+  padding: 14px 14px 10px;
+  line-height: 21px;
+  font-size: 12px;
+  background: #fff;
+  position: relative;
+  &-cell {
+    display: flex;
+  }
+  &-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title {
+    font-size: 16px;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+  }
+  .r-img {
+    width: 122px;
+    height: 90px;
+    border-radius: 2px;
+    margin-left: 10px;
+  }
+  .pic {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    img {
+      // width: 107px;
+      height: 66px;
+      margin-right: 10px;
+      flex: 1;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  .des {
+    color:#C3C3C3FF;
+    display: flex;
+    justify-content: space-between;
+  }
+  .message-hot {
+    background: #F8F8F6FF;
+    border-radius: 4px;
+    color: #7F7F7FFF;
+    padding: 10px;
+    margin: 13px 0 4px;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // -webkit-line-clamp: 2;
+    // display: -webkit-box;
+    // word-wrap: break-word;
+    // -webkit-box-orient: vertical;
+    .nickname {
+      color:#3E4782FF;
+    }
+    .ell2 {
+      @include ell2();
+    }
+    .svg-icon {
+      width: 29px;
+      height: 13px;
+      margin-right: 6px;
+    }
+  }
+  .ico-img {
+    margin-left: 10px;
+  }
+  &::after {
+    content: "";
+    display: block;
+    // border-bottom: solid 1px #DFDFDFFF;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: scaleY(0.5);
+    height: 1px;
+    background: #DFDFDFFF;
+  }
+  &.single {
+    .title {
+      -webkit-line-clamp: 3;
+    }
+  }
+}
 .tab {
   margin-bottom: 6px;
 }

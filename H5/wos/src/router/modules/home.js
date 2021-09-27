@@ -27,7 +27,12 @@ export default [
       },
       { path: 'EuroCC-library',
         name: 'EuroCCLibrary',
-        component: () => import('views/open/EFA/library') }
+        component: () => import('views/open/EFA/library') 
+      },
+      { path: 'LM-library',
+        name: 'LMLibrary',
+        component: () => import('views/open/LM/library') 
+      }
     ]
   }
 ]

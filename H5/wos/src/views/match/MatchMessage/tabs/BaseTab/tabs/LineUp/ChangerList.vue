@@ -8,7 +8,8 @@
         v-for="(item, index) in homeChanger"
         :key="index"
         flex="cross:center box:mean"
-        class="changer-list-item van-hairline--bottom"
+        class="changer-list-item"
+        :class="{ 'van-hairline--bottom': index != homeChanger.length - 1 }"
       >
         <div flex="cross:center">
           <div
@@ -47,7 +48,8 @@
         v-for="(item, index) in awayChanger"
         :key="index"
         flex="cross:center box:mean"
-        class="changer-list-item van-hairline--bottom"
+        class="changer-list-item"
+        :class="{ 'van-hairline--bottom': index != awayChanger.length - 1 }"
       >
         <div flex="cross:center box:first">
           <div
@@ -113,8 +115,8 @@ export default {
     }
   }
   &-item {
-    padding: 6px 15px;
-    color: $--color-text-secondary;
+    padding: 10px 15px;
+    color: $--color-text-defalt;
     // border-bottom: 1px solid #EDEDED;
     margin: -1px 0;
     display: flex;
@@ -158,7 +160,7 @@ export default {
     &__name {
       margin-left: 10px;
       .name {
-        color: $--color-text-primary;
+        color: $--color-text-defalt;
         font-size: 13px;
       }
     }

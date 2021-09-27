@@ -23,6 +23,7 @@ import '@/styles/index.scss'
 import pinyin from 'js-pinyin'
 
 import * as filters from './filters'
+import './directive/loopPress'
 
 Vue.use(setCode)
 Vue.use(Vant)

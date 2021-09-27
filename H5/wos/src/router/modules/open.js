@@ -13,5 +13,10 @@ export default [
     path: 'open/EFA',
     name: 'EFA',
     component: () => import('views/open/EFA')
+  },
+  {
+    path: 'open/LM',
+    name: 'LM',
+    component: () => import('views/open/LM')
   }
 ]

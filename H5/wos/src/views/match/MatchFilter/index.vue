@@ -3,26 +3,9 @@
     <van-nav-bar left-arrow title="赛事筛选" @click-left="$router.go(-1)" />
     <div class="match-filter-content">
       <div class="match-filter-main">
-        <!-- <div class="sort">
-          <div class="title">排序</div>
-          <van-radio-group v-model="params.order" @change="handleSort">
-            <van-cell-group>
-              <van-cell
-                v-for="item in radios"
-                :key="item.value"
-                :title="item.label"
-                clickable
-                @click="params.order = item.value"
-              >
-                <template #right-icon>
-                  <van-radio :name="item.value" icon-size="16px" />
-                </template>
-              </van-cell>
-            </van-cell-group>
-          </van-radio-group>
-        </div> -->
+
         <div class="competition">
-          <div class="title" flex="box:mean cross:center">
+          <!-- <div class="title" flex="box:mean cross:center">
             <div>
               <span>赛事</span>
               <small>已选<font>{{ matchTimes }}</font>场</small>
@@ -32,8 +15,8 @@
               <button @click="handleSelectAll()">全选</button>
               <button @click="toggleSelect()">反选</button>
             </div>
-          </div>
-          <div class="tab-main van-hairline--bottom" flex="box:mean">
+          </div> -->
+          <!-- <div class="tab-main van-hairline--bottom" flex="box:mean">
             <div>
               <van-tabs v-model.number="query.type" :before-change="handleTab">
                 <van-tab
@@ -45,7 +28,7 @@
               </van-tabs>
             </div>
             <div />
-          </div>
+          </div> -->
           <van-row type="flex" gutters="14" class="competition-list">
             <van-col v-for="(item, index) in items" :key="index" span="6">
               <button
@@ -60,6 +43,17 @@
       </div>
     </div>
     <div class="match-filter-footer van-hairline--top">
+      <div class="count-box">
+        已选<span class="num">{{ matchTimes }}</span>场比赛
+      </div>
+      <!-- <van-radio-group class="filter-box" v-model="radio" direction="horizontal">
+        <van-radio name="1">全选</van-radio>
+        <van-radio name="2">五大联赛</van-radio>
+      </van-radio-group> -->
+      <div class="filter-box">
+        <van-checkbox @click="handleSelectAll" v-model="selectAll" checked-color="#00B48DFF">全选</van-checkbox>
+        <van-checkbox @click="handleSelectFive" v-model="selectFive" checked-color="#00B48DFF">五大联赛</van-checkbox>
+      </div>
       <van-button type="primary" @click="handleSubmit">
         {{ $t("confirm") }}
       </van-button>
@@ -75,6 +69,9 @@ export default {
   name: 'MatchFilter',
   data() {
     return {
+      // selectAll: false,
+      selectFive: false,
+      radio: 1,
       radios: [
         { value: true, label: '按比赛时间排序' },
         { value: false, label: '按联赛名称排序' }
@@ -121,7 +118,14 @@ export default {
     },
     checkedColor() {
       return variables.theme
-    }
+    },
+    selectAll: {
+      get() {
+        return this.params.ids.length == this.items.length
+      },
+      set(value) {
+      }
+    },
   },
   watch: {
     'params.matchType'(value) {
@@ -207,10 +211,38 @@ export default {
       })
     },
     handleSelectAll() {
+      let isSelectAll = false
+      if(this.selectAll === true){
+        
+      } else {
+        this.selectFive = false 
+        isSelectAll=true
+        this.selectAll = true
+      }
       this.params.ids = []
       this.items.map(item => {
-        item.active = true
-        this.params.ids.push(item.competitionId)
+        item.active = isSelectAll
+        item.active && this.params.ids.push(item.competitionId)
+        return item
+      })
+      
+    },
+    handleSelectFive() {
+      if(this.selectFive === true){
+        this.selectAll = false
+      } else {
+
+      }
+
+      this.params.ids = []
+      this.items.map(item => {
+        if(item.bigFive === 1){
+          item.active = this.selectFive
+        }else{
+          item.active = false
+        }
+        
+        item.active && this.params.ids.push(item.competitionId)
         return item
       })
     },
@@ -227,6 +259,9 @@ export default {
       })
     },
     handleClick(item) {
+      this.selectAll = false
+      this.selectFive = false
+
       if (item.active) {
         item.active = false
         this.params.ids.map((id, index) => {
@@ -329,10 +364,35 @@ export default {
     padding: 0 10px;
     background: #fff;
     text-align: right;
+    height: 54px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     ::v-deep .van-button {
       vertical-align: middle;
-      height: 35px;
-      line-height: 35px;
+      height: 37px;
+      width: 80px;
+      line-height: 37px;
+      font-size: 16px;
+    }
+    .count-box{
+      color: #A7A7A7FF;
+      margin-right: 18px;
+      .num{
+        color: #F2B53DFF;
+      }
+    }
+    .filter-box{
+      font-size: 14px;
+      display: flex;
+      .van-checkbox{
+        margin-right: 14px;
+      }
+      ::v-deep .van-radio__label,::v-deep .van-checkbox__label{
+        color: #040404FF;
+        margin-left: 5px;
+      }
     }
   }
 }

@@ -159,9 +159,9 @@ export default {
   width: 100%;
   font-size: 14px;
   text-align: center;
-  color: #edb445;
+  color: #F2B53DFF;
   background: #f8f8f6;
-  line-height: 24px;
-  height: 24px;
+  line-height: 28px;
+  height: 28px;
 }
 </style>

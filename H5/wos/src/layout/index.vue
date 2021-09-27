@@ -206,9 +206,9 @@ export default {
       Vue.prototype.$socket = observer.WebSocket
     },
     subscribe() {
-      // this.checkTimeoutId = setInterval(() => {
+      this.checkTimeoutId = setInterval(() => {
         Vue.prototype.$socket.sendObj({ cmdType: 'ping', data: '' })
-      // }, 1000 * 20)
+      }, 1000 * 20)
 
       Vue.prototype.$socket.sendObj({
         cmdType: 'subscribe',

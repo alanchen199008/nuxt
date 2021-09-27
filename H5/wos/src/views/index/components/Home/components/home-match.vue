@@ -264,13 +264,13 @@ export default {
         }
       }
       .hot-match-item__middle {
-        width: 30px;
+        width: 60px;
         text-align: center;
         padding: 12px 0 0 0;
         .time {
           color: #333333;
           font-weight: 600;
-          font-size: 12px;
+          font-size: 11px;
           &.show {
             visibility: visible;
           }

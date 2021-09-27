@@ -1,11 +1,11 @@
 <template>
   <div class="shooter-tops">
-    <van-pull-refresh
+    <!-- <van-pull-refresh
       v-model="refreshing"
       class="scroll-touch"
       flex-box="1"
       @refresh="onRefresh"
-    >
+    > -->
       <table class="top-list">
         <tr>
           <th width="40">名次</th>
@@ -15,7 +15,7 @@
         </tr>
         <template v-if="shooterTops.length > 0">
           <tr v-for="(item, index) in shooterTops" :key="index">
-            <td><span class="position" :class=" index<=2 ? 'primary':'default'">{{ team.position }}</span></td>
+            <td><span class="position" :class=" index<=2 ? 'primary':'default'">{{ item.position }}</span></td>
             <td>{{ item.player }}</td>
             <td>{{ item.teamName }}</td>
             <td>{{ item.goalNumber }}</td>
@@ -27,7 +27,7 @@
           </td>
         </tr>
       </table>
-    </van-pull-refresh>
+    <!-- </van-pull-refresh> -->
   </div>
 </template>
 
@@ -40,13 +40,13 @@ export default {
     }
   },
   created() {
-    this.getData()
+    // this.getData()
   },
   methods: {
     getData() {
       getShooterTops().then(([data, error]) => {
         if (!error) {
-          // this.shooterTops = data
+          this.shooterTops = data
         }
       })
     }

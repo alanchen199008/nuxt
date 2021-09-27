@@ -50,17 +50,17 @@ export default {
     ...mapGetters(['instantMatchList'])
   },
   watch: {
-    items() {
-      this.items.map(item => {
-        this.buttons.map(button => {
-          if (this.active !== 0) {
-            this.$set(item, 'stageName', button.name + item.stageName)
-          }
-          return button
-        })
-        return item
-      })
-    },
+    // items() {
+    //   this.items.map(item => {
+    //     this.buttons.map(button => {
+    //       if (this.active !== 0) {
+    //         this.$set(item, 'stageName', button.name + item.stageName)
+    //       }
+    //       return button
+    //     })
+    //     return item
+    //   })
+    // },
     instantMatchList(items) {
       this.items.map(item => {
         items.map(i => {
@@ -118,14 +118,7 @@ export default {
       getEuroCCInstant({ stageId: button.stageId })
         .then(([data, error]) => {
           if (!error) {
-            if (index !== 0) {
-              this.items = data.map(item => {
-                this.$set(item, 'stageName', button.name + item.stageName)
-                return item
-              })
-            } else {
-              this.items = data
-            }
+            this.items = data
           }
         })
     },

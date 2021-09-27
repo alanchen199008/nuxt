@@ -17,9 +17,9 @@
           <van-tab v-for="item in typesList" :key="item.key" :title="item.label" :name="item.name" />
         </van-tabs>
       </div>
-      <!-- <div class="swiper">
+      <div class="swiper">
         <d-swiper :position="6" :height="72" />
-      </div> -->
+      </div>
       <template v-if="tabValue === 'focus'">
         <component :is="tabValue" ref="component" @tab-change="tabChange" />
       </template>
